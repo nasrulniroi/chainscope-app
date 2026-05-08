@@ -22,8 +22,12 @@ export function HomePage() {
   const gas = useGasOracle();
 
   return (
-    <div className="space-y-6">
-      <PageHeader title={t("home.title")} description={t("home.tagline")} />
+    <div className="space-y-7">
+      <PageHeader
+        eyebrow="DeFi Command Center"
+        title={t("home.title")}
+        description={t("home.tagline")}
+      />
       <QueryState isLoading={global.isLoading} error={global.error}>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <MetricCard
@@ -133,15 +137,20 @@ export function HomePage() {
         </Card>
       </div>
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <div className="flex items-end justify-between">
-          <div>
-            <h2 className="text-lg font-semibold tracking-tight">{t("home.browseTitle")}</h2>
-            <p className="text-sm text-muted-foreground">{t("home.browseSub")}</p>
+          <div className="space-y-1">
+            <div className="label-eyebrow">Index</div>
+            <h2 className="font-display text-xl font-semibold leading-tight md:text-[1.6rem]">
+              {t("home.browseTitle")}
+            </h2>
+            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              {t("home.browseSub")}
+            </p>
           </div>
         </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {hubs.map((s) => {
+          {hubs.map((s, idx) => {
             const Icon = s.icon;
             const sectionLabel = t(`nav.sections.${s.id}.label`, { defaultValue: s.label });
             const sectionDesc = t(`nav.sections.${s.id}.description`, {
@@ -151,16 +160,19 @@ export function HomePage() {
               <Link
                 key={s.id}
                 to={s.landingPath}
-                className="group flex h-full flex-col rounded-lg border border-border/60 bg-card p-4 transition hover:border-primary/40 hover:bg-accent"
+                style={{ animationDelay: `${idx * 40}ms` }}
+                className="fade-rise group relative flex h-full flex-col overflow-hidden rounded-lg border border-border/60 bg-card p-4 transition hover:border-primary/50 hover:bg-accent"
               >
                 <div className="flex items-center gap-3">
-                  <div className="rounded-md bg-primary/10 p-2 text-primary">
+                  <div className="rounded-md bg-primary/10 p-2 text-primary ring-1 ring-primary/15">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <div className="text-base font-semibold">{sectionLabel}</div>
-                  <ArrowRight className="ml-auto h-4 w-4 opacity-0 transition group-hover:opacity-100" />
+                  <div className="font-display text-base font-semibold leading-tight">
+                    {sectionLabel}
+                  </div>
+                  <ArrowRight className="ml-auto h-4 w-4 -translate-x-1 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
                 </div>
-                <p className="mt-2 text-xs text-muted-foreground">{sectionDesc}</p>
+                <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{sectionDesc}</p>
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {s.items.slice(0, 4).map((leaf) => {
                     const slug = leafSlug(s.basePath, leaf.to);

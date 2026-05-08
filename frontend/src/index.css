@@ -3,83 +3,115 @@
 @tailwind utilities;
 
 @layer base {
-  /* Theme: violet/purple accent on cool slate — "biru keunguan".
-     Hue/sat/lightness tuples are HSL components passed to hsl(var(--token)). */
+  /* Theme: "Editorial Trading Terminal".
+     Light = warm cream paper + deep ink + petrol-teal accent (FT/editorial).
+     Dark  = deep ink charcoal + cream foreground + bright teal accent (terminal).
+     HSL components feed hsl(var(--token)). */
   :root {
-    --background: 230 30% 98%;
-    --foreground: 232 35% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 232 35% 12%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 232 35% 12%;
-    --primary: 272 75% 55%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 230 25% 94%;
-    --secondary-foreground: 232 35% 16%;
-    --muted: 230 25% 95%;
-    --muted-foreground: 230 10% 45%;
-    --accent: 230 25% 94%;
-    --accent-foreground: 232 35% 16%;
-    --destructive: 0 75% 55%;
-    --destructive-foreground: 0 0% 100%;
-    --success: 158 64% 42%;
-    --success-foreground: 0 0% 100%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 232 47% 11%;
-    --border: 230 18% 86%;
-    --input: 230 18% 86%;
-    --ring: 272 75% 55%;
-    --radius: 0.6rem;
+    --background: 38 38% 96%;
+    --foreground: 220 25% 12%;
+    --card: 38 42% 99%;
+    --card-foreground: 220 25% 12%;
+    --popover: 38 42% 99%;
+    --popover-foreground: 220 25% 12%;
+    --primary: 194 75% 32%;
+    --primary-foreground: 38 38% 97%;
+    --secondary: 38 28% 92%;
+    --secondary-foreground: 220 25% 16%;
+    --muted: 38 22% 93%;
+    --muted-foreground: 220 12% 38%;
+    --accent: 38 28% 92%;
+    --accent-foreground: 220 25% 16%;
+    --destructive: 4 70% 48%;
+    --destructive-foreground: 38 38% 97%;
+    --success: 158 64% 36%;
+    --success-foreground: 38 38% 97%;
+    --warning: 28 85% 50%;
+    --warning-foreground: 220 25% 12%;
+    --border: 38 18% 84%;
+    --input: 38 18% 84%;
+    --ring: 194 75% 32%;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 232 30% 7%;
-    --foreground: 230 30% 95%;
-    --card: 232 26% 10%;
-    --card-foreground: 230 30% 95%;
-    --popover: 232 26% 10%;
-    --popover-foreground: 230 30% 95%;
-    --primary: 272 90% 72%;
-    --primary-foreground: 272 47% 12%;
-    --secondary: 232 22% 15%;
-    --secondary-foreground: 230 30% 95%;
-    --muted: 232 22% 13%;
-    --muted-foreground: 230 14% 67%;
-    --accent: 232 22% 17%;
-    --accent-foreground: 230 30% 95%;
-    --destructive: 0 70% 55%;
-    --destructive-foreground: 230 40% 98%;
+    --background: 220 26% 7%;
+    --foreground: 38 25% 92%;
+    --card: 220 24% 9%;
+    --card-foreground: 38 25% 92%;
+    --popover: 220 24% 9%;
+    --popover-foreground: 38 25% 92%;
+    --primary: 186 78% 58%;
+    --primary-foreground: 220 30% 8%;
+    --secondary: 220 22% 14%;
+    --secondary-foreground: 38 22% 92%;
+    --muted: 220 20% 12%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 220 20% 16%;
+    --accent-foreground: 38 22% 92%;
+    --destructive: 4 70% 58%;
+    --destructive-foreground: 38 25% 95%;
     --success: 158 60% 50%;
-    --success-foreground: 232 47% 11%;
-    --warning: 38 92% 60%;
-    --warning-foreground: 232 47% 11%;
-    --border: 232 22% 18%;
-    --input: 232 22% 18%;
-    --ring: 272 90% 72%;
+    --success-foreground: 220 25% 8%;
+    --warning: 28 85% 60%;
+    --warning-foreground: 220 25% 8%;
+    --border: 220 18% 16%;
+    --input: 220 18% 16%;
+    --ring: 186 78% 58%;
   }
 
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
   html {
     color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1,
+      "ss01" 1,
+      "ss02" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1;
+    letter-spacing: -0.015em;
+  }
+  /* Variable Fraunces optical sizing — bigger headings get higher SOFT axis. */
+  h1 {
+    font-variation-settings: "opsz" 96, "SOFT" 50;
+  }
+  h2 {
+    font-variation-settings: "opsz" 48, "SOFT" 35;
+  }
+  h3 {
+    font-variation-settings: "opsz" 24, "SOFT" 20;
   }
 }
 
 @layer utilities {
   .ticker-up {
-    @apply text-emerald-400;
+    @apply text-emerald-600 dark:text-emerald-400;
   }
   .ticker-down {
-    @apply text-rose-400;
+    @apply text-rose-600 dark:text-rose-400;
   }
   .num {
     font-variant-numeric: tabular-nums;
-    font-family: "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", monospace;
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    letter-spacing: -0.01em;
+  }
+  /* Editorial uppercase tracking for section/eyebrow labels. */
+  .label-eyebrow {
+    @apply font-mono text-[10px] uppercase text-muted-foreground;
+    letter-spacing: 0.18em;
   }
   .scrollbar-thin::-webkit-scrollbar {
     width: 6px;
@@ -88,5 +120,50 @@
   .scrollbar-thin::-webkit-scrollbar-thumb {
     background: hsl(var(--muted));
     border-radius: 3px;
+  }
+  /* Atmospheric layered gradient mesh. Sits behind content, never blocks input. */
+  .ambient-mesh {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(
+        60rem 40rem at 90% -10%,
+        hsl(var(--primary) / 0.18),
+        transparent 60%
+      ),
+      radial-gradient(
+        50rem 35rem at -10% 110%,
+        hsl(var(--primary) / 0.1),
+        transparent 60%
+      );
+  }
+  /* Subtle grain texture (SVG noise) so backgrounds feel like paper/film, not flat. */
+  .ambient-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .dark .ambient-grain {
+    opacity: 0.06;
+  }
+  /* Page-load reveal: staggered fade + small slide. */
+  @keyframes fade-rise {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .fade-rise {
+    animation: fade-rise 480ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 }

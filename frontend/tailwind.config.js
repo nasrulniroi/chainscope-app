@@ -60,8 +60,27 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "monospace"],
+        sans: [
+          '"IBM Plex Sans"',
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "sans-serif",
+        ],
+        display: [
+          '"Fraunces"',
+          "\"Source Serif 4\"",
+          "Georgia",
+          "serif",
+        ],
+        mono: [
+          '"IBM Plex Mono"',
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "monospace",
+        ],
       },
       keyframes: {
         "accordion-down": {
