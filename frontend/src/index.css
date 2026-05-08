@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* Theme: indigo-violet ("biru keunguan") accent on cool slate.
+  /* Theme: violet/purple accent on cool slate — "biru keunguan".
      Hue/sat/lightness tuples are HSL components passed to hsl(var(--token)). */
   :root {
     --background: 230 30% 98%;
@@ -12,7 +12,7 @@
     --card-foreground: 232 35% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 232 35% 12%;
-    --primary: 255 70% 55%;
+    --primary: 272 75% 55%;
     --primary-foreground: 0 0% 100%;
     --secondary: 230 25% 94%;
     --secondary-foreground: 232 35% 16%;
@@ -28,7 +28,7 @@
     --warning-foreground: 232 47% 11%;
     --border: 230 18% 86%;
     --input: 230 18% 86%;
-    --ring: 255 70% 55%;
+    --ring: 272 75% 55%;
     --radius: 0.6rem;
   }
 
@@ -39,8 +39,8 @@
     --card-foreground: 230 30% 95%;
     --popover: 232 26% 10%;
     --popover-foreground: 230 30% 95%;
-    --primary: 255 85% 70%;
-    --primary-foreground: 232 47% 11%;
+    --primary: 272 90% 72%;
+    --primary-foreground: 272 47% 12%;
     --secondary: 232 22% 15%;
     --secondary-foreground: 230 30% 95%;
     --muted: 232 22% 13%;
@@ -55,7 +55,7 @@
     --warning-foreground: 232 47% 11%;
     --border: 232 22% 18%;
     --input: 232 22% 18%;
-    --ring: 255 85% 70%;
+    --ring: 272 90% 72%;
   }
 
   * {

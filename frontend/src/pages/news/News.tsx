@@ -9,8 +9,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useNews } from "@/hooks/queries";
 import { timeAgo } from "@/lib/utils";
 
+const ALL_CATEGORIES = "all";
+
 const CATEGORIES = [
-  { id: "", label: "All" },
+  { id: ALL_CATEGORIES, label: "All" },
   { id: "BTC", label: "Bitcoin" },
   { id: "ETH", label: "Ethereum" },
   { id: "DeFi", label: "DeFi" },
@@ -21,8 +23,8 @@ const CATEGORIES = [
 ];
 
 export function NewsPage() {
-  const [category, setCategory] = useState("");
-  const news = useNews(category);
+  const [category, setCategory] = useState<string>(ALL_CATEGORIES);
+  const news = useNews(category === ALL_CATEGORIES ? "" : category);
 
   return (
     <div className="space-y-4">
@@ -36,7 +38,7 @@ export function NewsPage() {
             </SelectTrigger>
             <SelectContent>
               {CATEGORIES.map((c) => (
-                <SelectItem key={c.id || "all"} value={c.id}>
+                <SelectItem key={c.id} value={c.id}>
                   {c.label}
                 </SelectItem>
               ))}
