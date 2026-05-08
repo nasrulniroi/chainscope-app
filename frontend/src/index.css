@@ -68,11 +68,7 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings:
-      "rlig" 1,
-      "calt" 1,
-      "ss01" 1,
-      "ss02" 1;
+    font-feature-settings: "rlig" 1, "calt" 1;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -80,19 +76,7 @@
   h1,
   h2,
   h3 {
-    @apply font-display;
-    font-feature-settings: "ss01" 1, "ss02" 1, "kern" 1;
     letter-spacing: -0.015em;
-  }
-  /* Variable Fraunces optical sizing — bigger headings get higher SOFT axis. */
-  h1 {
-    font-variation-settings: "opsz" 96, "SOFT" 50;
-  }
-  h2 {
-    font-variation-settings: "opsz" 48, "SOFT" 35;
-  }
-  h3 {
-    font-variation-settings: "opsz" 24, "SOFT" 20;
   }
 }
 
@@ -105,12 +89,12 @@
   }
   .num {
     font-variant-numeric: tabular-nums;
-    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
     letter-spacing: -0.01em;
   }
   /* Editorial uppercase tracking for section/eyebrow labels. */
   .label-eyebrow {
-    @apply font-mono text-[10px] uppercase text-muted-foreground;
+    @apply text-[10px] font-medium uppercase text-muted-foreground;
     letter-spacing: 0.18em;
   }
   .scrollbar-thin::-webkit-scrollbar {

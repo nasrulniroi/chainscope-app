@@ -59,7 +59,7 @@ export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
         <Link to="/" className="flex items-center gap-2">
           <LineChart className="h-5 w-5 text-primary" />
           {!collapsed && (
-            <span className="font-display text-base font-semibold leading-none tracking-tight">
+            <span className="text-base font-semibold leading-none tracking-tight">
               DCC
             </span>
           )}

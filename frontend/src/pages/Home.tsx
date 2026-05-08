@@ -141,7 +141,7 @@ export function HomePage() {
         <div className="flex items-end justify-between">
           <div className="space-y-1">
             <div className="label-eyebrow">Index</div>
-            <h2 className="font-display text-xl font-semibold leading-tight md:text-[1.6rem]">
+            <h2 className="text-xl font-semibold leading-tight md:text-[1.6rem]">
               {t("home.browseTitle")}
             </h2>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
@@ -167,7 +167,7 @@ export function HomePage() {
                   <div className="rounded-md bg-primary/10 p-2 text-primary ring-1 ring-primary/15">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <div className="font-display text-base font-semibold leading-tight">
+                  <div className="text-base font-semibold leading-tight">
                     {sectionLabel}
                   </div>
                   <ArrowRight className="ml-auto h-4 w-4 -translate-x-1 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
