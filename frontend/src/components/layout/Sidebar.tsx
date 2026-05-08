@@ -172,14 +172,7 @@ export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
         })}
       </nav>
       <div className="border-t border-border p-2 text-[10px] text-muted-foreground">
-        {!collapsed ? (
-          <div className="flex flex-col gap-0.5 leading-tight">
-            <span className="font-mono text-[10px] tracking-wide">DCC v0.1</span>
-            <span>Free public APIs only</span>
-          </div>
-        ) : (
-          <div className="text-center font-mono">v0.1</div>
-        )}
+        <div className={cn("font-mono tracking-wide", collapsed && "text-center")}>DCC v0.1</div>
       </div>
     </aside>
   );
