@@ -23,8 +23,8 @@ function RainbowKitWrapper({ children }: { children: ReactNode }) {
   const { theme } = useSettings();
   const rkTheme =
     theme === "dark"
-      ? darkTheme({ accentColor: "#f59e0b", accentColorForeground: "#0b0f17", borderRadius: "medium" })
-      : lightTheme({ accentColor: "#d97706", accentColorForeground: "#ffffff", borderRadius: "medium" });
+      ? darkTheme({ accentColor: "#8b5cf6", accentColorForeground: "#ffffff", borderRadius: "medium" })
+      : lightTheme({ accentColor: "#6d28d9", accentColorForeground: "#ffffff", borderRadius: "medium" });
   return (
     <RainbowKitProvider theme={rkTheme} modalSize="compact">
       {children}
