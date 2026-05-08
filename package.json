@@ -1,0 +1,7 @@
+{
+  "name": "defi-command-center",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build"
+  }
+}
