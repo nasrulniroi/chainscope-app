@@ -1,6 +1,7 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { AppShell } from "@/components/layout/AppShell";
+import { SectionHub } from "@/components/layout/SectionHub";
 import { HomePage } from "@/pages/Home";
 import { NotFoundPage } from "@/pages/NotFound";
 
@@ -71,7 +72,7 @@ export default function App() {
         <Route index element={<HomePage />} />
 
         <Route path="markets">
-          <Route index element={<Navigate to="/markets/overview" replace />} />
+          <Route index element={<SectionHub sectionId="markets" />} />
           <Route path="overview" element={<MarketsOverviewPage />} />
           <Route path="heatmap" element={<MarketsHeatmapPage />} />
           <Route path="sectors" element={<MarketsSectorsPage />} />
@@ -90,7 +91,7 @@ export default function App() {
         </Route>
 
         <Route path="defi">
-          <Route index element={<Navigate to="/defi/protocols" replace />} />
+          <Route index element={<SectionHub sectionId="defi" />} />
           <Route path="protocols" element={<DefiProtocolsPage />} />
           <Route path="protocols/:slug" element={<DefiProtocolDetailPage />} />
           <Route path="yields" element={<DefiYieldsPage />} />
@@ -108,7 +109,7 @@ export default function App() {
         </Route>
 
         <Route path="wallet">
-          <Route index element={<Navigate to="/wallet/overview" replace />} />
+          <Route index element={<SectionHub sectionId="wallet" />} />
           <Route path="overview" element={<WalletOverviewPage />} />
           <Route path="tokens" element={<WalletTokensPage />} />
           <Route path="positions" element={<WalletPositionsPage />} />
@@ -120,7 +121,7 @@ export default function App() {
         </Route>
 
         <Route path="onchain">
-          <Route index element={<Navigate to="/onchain/wallet-lookup" replace />} />
+          <Route index element={<SectionHub sectionId="onchain" />} />
           <Route path="wallet-lookup" element={<OnchainWalletLookupPage />} />
           <Route path="whale-watch" element={<OnchainWhaleWatchPage />} />
           <Route path="contract" element={<OnchainContractPage />} />
@@ -128,7 +129,7 @@ export default function App() {
         </Route>
 
         <Route path="nft">
-          <Route index element={<Navigate to="/nft/trending" replace />} />
+          <Route index element={<SectionHub sectionId="nft" />} />
           <Route path="trending" element={<NftTrendingPage />} />
           <Route path="floor-radar" element={<NftFloorRadarPage />} />
           <Route path="calendar" element={<NftCalendarPage />} />
@@ -141,7 +142,7 @@ export default function App() {
         </Route>
 
         <Route path="tools">
-          <Route index element={<Navigate to="/tools/gas" replace />} />
+          <Route index element={<SectionHub sectionId="tools" />} />
           <Route path="gas" element={<ToolsGasPage />} />
           <Route path="converter" element={<ToolsConverterPage />} />
           <Route path="swap-simulator" element={<ToolsSwapSimulatorPage />} />
@@ -150,7 +151,7 @@ export default function App() {
         </Route>
 
         <Route path="settings">
-          <Route index element={<Navigate to="/settings/general" replace />} />
+          <Route index element={<SectionHub sectionId="settings" />} />
           <Route path="general" element={<SettingsGeneralPage />} />
           <Route path="wallet" element={<SettingsWalletPage />} />
           <Route path="api" element={<SettingsApiPage />} />

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BarChart3, Banknote, Coins, Flame, Newspaper, Network, Wallet } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { PageHeader } from "@/components/common/PageHeader";
 import { MetricCard } from "@/components/common/MetricCard";
@@ -9,19 +9,11 @@ import { Sparkline } from "@/components/common/Sparkline";
 import { CoinThumb } from "@/components/common/CoinThumb";
 import { useGasOracle, useMarketGlobal, useTopCoins } from "@/hooks/queries";
 import { changeColor, formatCompact, formatCurrency, formatPct } from "@/lib/utils";
-
-const QUICK_LINKS: { to: string; label: string; description: string; icon: typeof BarChart3 }[] = [
-  { to: "/markets/overview", label: "Markets", description: "Market cap, dominance, top coins.", icon: BarChart3 },
-  { to: "/tokens", label: "Tokens", description: "Sortable, filterable token universe.", icon: Coins },
-  { to: "/defi/protocols", label: "DeFi Protocols", description: "TVL, categories, history.", icon: Banknote },
-  { to: "/defi/yields", label: "Yields", description: "Live APYs across chains.", icon: BarChart3 },
-  { to: "/chains", label: "Chains", description: "TVL ranking and details.", icon: Network },
-  { to: "/tools/gas", label: "Gas", description: "Live gas tracker + cost estimator.", icon: Flame },
-  { to: "/news", label: "News", description: "Latest crypto headlines.", icon: Newspaper },
-  { to: "/wallet/overview", label: "My Wallet", description: "Connect to view holdings.", icon: Wallet },
-];
+import { NAV_SECTIONS } from "@/routes/config";
 
 export function HomePage() {
+  // Hide wallet hub from logged-out home; it's still in the sidebar after connect.
+  const hubs = NAV_SECTIONS.filter((s) => !s.walletGated);
   const global = useMarketGlobal();
   const top = useTopCoins({ perPage: 8 });
   const gas = useGasOracle();
@@ -136,33 +128,52 @@ export function HomePage() {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Jump in</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
-            {QUICK_LINKS.map(({ to, label, description, icon: Icon }) => (
+      <section className="space-y-3">
+        <div className="flex items-end justify-between">
+          <div>
+            <h2 className="text-lg font-semibold tracking-tight">Browse the terminal</h2>
+            <p className="text-sm text-muted-foreground">
+              Pick a hub to dive in. Each hub opens its own page with the related tools — nothing else clutters the screen.
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {hubs.map((s) => {
+            const Icon = s.icon;
+            return (
               <Link
-                key={to}
-                to={to}
-                className="group flex items-start gap-3 rounded-md border border-border/60 p-3 transition hover:border-primary/40 hover:bg-accent"
+                key={s.id}
+                to={s.landingPath}
+                className="group flex h-full flex-col rounded-lg border border-border/60 bg-card p-4 transition hover:border-primary/40 hover:bg-accent"
               >
-                <div className="rounded-md bg-primary/10 p-2 text-primary">
-                  <Icon className="h-4 w-4" />
-                </div>
-                <div className="text-sm">
-                  <div className="flex items-center gap-1 font-medium">
-                    {label}
-                    <ArrowRight className="h-3 w-3 opacity-0 transition group-hover:opacity-100" />
+                <div className="flex items-center gap-3">
+                  <div className="rounded-md bg-primary/10 p-2 text-primary">
+                    <Icon className="h-5 w-5" />
                   </div>
-                  <div className="text-xs text-muted-foreground">{description}</div>
+                  <div className="text-base font-semibold">{s.label}</div>
+                  <ArrowRight className="ml-auto h-4 w-4 opacity-0 transition group-hover:opacity-100" />
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground">{s.description}</p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {s.items.slice(0, 4).map((leaf) => (
+                    <span
+                      key={leaf.to}
+                      className="rounded-full border border-border/60 bg-muted/30 px-2 py-0.5 text-[11px] text-muted-foreground"
+                    >
+                      {leaf.label}
+                    </span>
+                  ))}
+                  {s.items.length > 4 ? (
+                    <span className="rounded-full border border-border/60 px-2 py-0.5 text-[11px] text-muted-foreground">
+                      +{s.items.length - 4}
+                    </span>
+                  ) : null}
                 </div>
               </Link>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }
