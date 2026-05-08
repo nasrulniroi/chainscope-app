@@ -198,7 +198,8 @@ def _coingecko_markets(*, page: int, per_page: int, ids: str | None, sparkline: 
 
 def _markets_top(query: dict[str, list[str]]) -> list[dict[str, Any]]:
     page = max(1, int(query.get("page", ["1"])[0] or 1))
-    per_page = min(100, max(10, int(query.get("per_page", ["100"])[0] or 100)))
+    # CoinGecko allows up to 250 per page on the public endpoint.
+    per_page = min(250, max(10, int(query.get("per_page", ["100"])[0] or 100)))
     ids_param = query.get("ids", [None])[0]
     sparkline = (query.get("sparkline", ["true"])[0] or "true").lower() != "false"
     cache_key = f"markets:top:{page}:{per_page}:{ids_param}:{sparkline}"
@@ -335,7 +336,10 @@ def _coin_chart(coin_id: str, days: str) -> dict[str, Any]:
 
     def fetch() -> dict[str, Any]:
         url = f"https://api.coingecko.com/api/v3/coins/{urllib.parse.quote(coin_id)}/market_chart?vs_currency=usd&days={safe_days}"
-        data = _http_get_json(url)
+        try:
+            data = _http_get_json(url)
+        except (urllib.error.HTTPError, urllib.error.URLError, socket.timeout, OSError):
+            return {"prices": [], "market_caps": [], "total_volumes": []}
         return {
             "prices": data.get("prices") or [],
             "market_caps": data.get("market_caps") or [],
@@ -520,6 +524,10 @@ def _bridges_routes(query: dict[str, list[str]]) -> dict[str, Any]:
     from_token = query.get("fromToken", ["0x0000000000000000000000000000000000000000"])[0]
     to_token = query.get("toToken", ["0x0000000000000000000000000000000000000000"])[0]
     amount = query.get("amount", ["1000000000000000000"])[0]
+    # LI.FI's /v1/quote requires a fromAddress; the quote response itself does not move funds.
+    placeholder_address = "0x000000000000000000000000000000000000dEaD"
+    from_address = query.get("fromAddress", [placeholder_address])[0] or placeholder_address
+    to_address = query.get("toAddress", [from_address])[0] or from_address
 
     def fetch() -> dict[str, Any]:
         params = {
@@ -528,6 +536,8 @@ def _bridges_routes(query: dict[str, list[str]]) -> dict[str, Any]:
             "fromToken": from_token,
             "toToken": to_token,
             "fromAmount": amount,
+            "fromAddress": from_address,
+            "toAddress": to_address,
             "integrator": "defi-command-center",
         }
         url = "https://li.quest/v1/quote?" + urllib.parse.urlencode(params)
@@ -535,6 +545,8 @@ def _bridges_routes(query: dict[str, list[str]]) -> dict[str, Any]:
             data = _http_get_json(url)
         except urllib.error.HTTPError as exc:
             return {"error": f"LI.FI returned {exc.code}", "routes": []}
+        except (urllib.error.URLError, socket.timeout, OSError) as exc:
+            return {"error": f"LI.FI unreachable: {exc}", "routes": []}
         estimate = data.get("estimate") or {}
         return {
             "routes": [
@@ -623,7 +635,15 @@ def _wallet_eth_balances(address: str) -> dict[str, Any]:
 
     def fetch() -> dict[str, Any]:
         url = f"https://api.ethplorer.io/getAddressInfo/{address}?apiKey=freekey"
-        data = _http_get_json(url)
+        try:
+            data = _http_get_json(url)
+        except (urllib.error.HTTPError, urllib.error.URLError, socket.timeout, OSError) as exc:
+            return {
+                "address": address,
+                "eth": {"balance": 0, "price": None, "value": 0},
+                "tokens": [],
+                "error": f"Ethplorer unreachable: {exc}",
+            }
         eth = data.get("ETH") or {}
         tokens: list[dict[str, Any]] = []
         for t in data.get("tokens") or []:
@@ -692,6 +712,12 @@ def _wallet_history(address: str, chain_id: int) -> dict[str, Any]:
             data = _http_get_json(url)
         except urllib.error.HTTPError as exc:
             return {"error": f"Etherscan {exc.code}", "txs": []}
+        except (urllib.error.URLError, socket.timeout, OSError) as exc:
+            return {"error": f"Etherscan unreachable: {exc}", "txs": []}
+        # Etherscan V2 returns result as a string error message when the request is malformed
+        # (e.g. missing API key, rate limit). Treat that as an empty list rather than crashing.
+        if isinstance((data or {}).get("result"), str):
+            return {"error": str(data.get("result")), "chain_id": chain_id, "address": safe, "txs": []}
         txs: list[dict[str, Any]] = []
         for t in (data or {}).get("result") or []:
             value_eth: float | None = None
@@ -743,8 +769,41 @@ def _onchain_contract(query: dict[str, list[str]]) -> dict[str, Any]:
             f"https://api.etherscan.io/v2/api?chainid={chain_id}&module=contract&action=getsourcecode"
             f"&address={addr}" + key_part
         )
-        data = _http_get_json(url)
-        first = ((data or {}).get("result") or [{}])[0]
+        try:
+            data = _http_get_json(url)
+        except (urllib.error.HTTPError, urllib.error.URLError, socket.timeout, OSError) as exc:
+            return {
+                "address": addr,
+                "chain_id": chain_id,
+                "is_contract": False,
+                "source_verified": False,
+                "contract_name": None,
+                "compiler": None,
+                "abi": None,
+                "source_code": None,
+                "proxy": False,
+                "implementation": None,
+                "error": f"Etherscan unreachable: {exc}",
+            }
+        result = (data or {}).get("result")
+        # Etherscan V2 returns a string in `result` for errors / unverified contracts.
+        if isinstance(result, str):
+            return {
+                "address": addr,
+                "chain_id": chain_id,
+                "is_contract": False,
+                "source_verified": False,
+                "contract_name": None,
+                "compiler": None,
+                "abi": None,
+                "source_code": None,
+                "proxy": False,
+                "implementation": None,
+                "error": result,
+            }
+        first = (result or [{}])[0]
+        if not isinstance(first, dict):
+            first = {}
         is_contract = bool(first.get("ABI") and first.get("ABI") != "Contract source code not verified")
         abi: Any = None
         if is_contract:
@@ -897,7 +956,7 @@ def _swap_quote(query: dict[str, list[str]]) -> dict[str, Any]:
         )
         try:
             data = _http_get_json(url)
-        except urllib.error.HTTPError:
+        except (urllib.error.HTTPError, urllib.error.URLError, socket.timeout, OSError):
             # Public 1inch endpoint without API key is best-effort. Fall back.
             return {
                 "from_token": src,
@@ -925,7 +984,7 @@ def _nft_trending() -> dict[str, Any]:
         url = "https://api.reservoir.tools/collections/trending/v1?period=24h&limit=24"
         try:
             data = _http_get_json(url)
-        except urllib.error.HTTPError:
+        except (urllib.error.HTTPError, urllib.error.URLError, socket.timeout, OSError):
             data = {"collections": []}
         out: list[dict[str, Any]] = []
         for c in data.get("collections") or []:
@@ -960,7 +1019,7 @@ def _nft_floor(query: dict[str, list[str]]) -> dict[str, Any]:
         )
         try:
             data = _http_get_json(url)
-        except urllib.error.HTTPError:
+        except (urllib.error.HTTPError, urllib.error.URLError, socket.timeout, OSError):
             return {"collection": None}
         coll = (data.get("collections") or [{}])[0]
         floor = ((coll.get("floorAsk") or {}).get("price") or {}).get("amount") or {}
@@ -991,7 +1050,7 @@ def _nft_wallet(query: dict[str, list[str]]) -> dict[str, Any]:
         )
         try:
             data = _http_get_json(url)
-        except urllib.error.HTTPError:
+        except (urllib.error.HTTPError, urllib.error.URLError, socket.timeout, OSError):
             data = {"collections": []}
         out: list[dict[str, Any]] = []
         for c in data.get("collections") or []:
