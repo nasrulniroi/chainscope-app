@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useNews } from "@/hooks/queries";
-import { timeAgo } from "@/lib/utils";
+import { stripHtml, timeAgo } from "@/lib/utils";
 
 const ALL_CATEGORIES = "all";
 
@@ -48,7 +48,10 @@ export function NewsPage() {
       />
       <QueryState isLoading={news.isLoading} error={news.error} isEmpty={(news.data?.articles?.length ?? 0) === 0} emptyMessage="No headlines for this category right now.">
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          {(news.data?.articles ?? []).slice(0, 60).map((a) => (
+          {(news.data?.articles ?? []).slice(0, 60).map((a) => {
+            const cleanTitle = stripHtml(a.title);
+            const cleanBody = stripHtml(a.body);
+            return (
             <Card key={`${a.id}-${a.url}`}>
               <CardContent className="pt-4">
                 <a
@@ -57,10 +60,10 @@ export function NewsPage() {
                   rel="noreferrer"
                   className="text-sm font-medium hover:text-primary"
                 >
-                  {a.title}
+                  {cleanTitle}
                 </a>
-                {a.body ? (
-                  <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{a.body}</p>
+                {cleanBody ? (
+                  <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{cleanBody}</p>
                 ) : null}
                 <div className="mt-2 flex flex-wrap items-center gap-1.5 text-[11px] text-muted-foreground">
                   <Badge variant="outline" className="text-[10px]">
@@ -76,7 +79,8 @@ export function NewsPage() {
                 </div>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
       </QueryState>
     </div>

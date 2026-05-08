@@ -86,3 +86,15 @@ export function safeNumber(input: unknown): number | null {
 export function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
+
+export function stripHtml(input: string | null | undefined): string {
+  if (!input) return "";
+  let text: string;
+  if (typeof window !== "undefined" && typeof window.DOMParser !== "undefined") {
+    const doc = new window.DOMParser().parseFromString(input, "text/html");
+    text = doc.body?.textContent ?? "";
+  } else {
+    text = input.replace(/<[^>]*>/g, " ");
+  }
+  return text.replace(/\s+/g, " ").trim();
+}
