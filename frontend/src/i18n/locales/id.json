@@ -1,0 +1,113 @@
+{
+  "common": {
+    "viewAll": "Lihat semua",
+    "loading": "Memuat…",
+    "error": "Gagal memuat",
+    "open": "Buka",
+    "language": "Bahasa"
+  },
+  "topbar": {
+    "searchPlaceholder": "Cari token atau alamat (0x…)",
+    "themeToggle": "Ubah tema",
+    "languageToggle": "Ganti bahasa"
+  },
+  "home": {
+    "title": "DeFi Command Center",
+    "tagline": "Terminal Web3 multi-chain gratis — pasar, DeFi, alat on-chain, dan dompetmu, semua di satu tempat.",
+    "metric": {
+      "totalMarketCap": "Total Kapitalisasi Pasar",
+      "volume24h": "Volume 24 jam",
+      "btcDominance": "Dominasi BTC",
+      "ethDominanceHint": "ETH {{value}}%",
+      "fearGreed": "Fear & Greed",
+      "fearGreedSource": "Sumber: alternative.me"
+    },
+    "topByMcap": "Teratas berdasarkan Market Cap",
+    "liveGas": "Gas Live (Ethereum)",
+    "gas": { "slow": "Lambat", "std": "Std", "fast": "Cepat", "baseFee": "Base fee", "block": "Blok" },
+    "openGasTools": "Buka alat gas →",
+    "browseTitle": "Jelajahi terminal",
+    "browseSub": "Pilih hub untuk masuk. Setiap hub punya halamannya sendiri dengan alat terkait — gak ada yang lain bikin layar berantakan."
+  },
+  "nav": {
+    "home": "Beranda",
+    "sections": {
+      "wallet": { "label": "Dompet Saya", "description": "Connect sekali, lihat semuanya: aset, NFT, posisi DeFi, riwayat, PnL, approval, dan alert." },
+      "markets": { "label": "Pasar", "description": "Tampilan makro crypto: kapitalisasi pasar, dominasi, heatmap, sektor, stablecoin, dan koin trending." },
+      "tokens": { "label": "Token", "description": "Telusuri, filter, dan bandingkan setiap token yang dilacak CoinGecko, dengan halaman detail untuk masing-masing." },
+      "defi": { "label": "DeFi", "description": "Data DeFi live dari DefiLlama: TVL, yield, pasar lending, volume DEX, dan rincian kategori." },
+      "chains": { "label": "Jaringan", "description": "Analitik per chain, perbandingan side-by-side, dan router bridge antar L1 dan L2." },
+      "onchain": { "label": "Alat On-Chain", "description": "Utilitas power-user: lookup alamat, pantau aliran whale, inspeksi kontrak, audit approval." },
+      "nft": { "label": "NFT", "description": "Ringkasan pasar NFT bertenaga Reservoir: koleksi trending, floor radar, kalender drop." },
+      "news": { "label": "Berita & Sentimen", "description": "Headline crypto terbaru dari CryptoCompare, Cointelegraph, dan Bitcoin Magazine, plus sentimen pasar." },
+      "tools": { "label": "Alat", "description": "Kalkulator praktis dan data live: gas tracker, kuotasi swap, kalkulator IL, backtest DCA." },
+      "settings": { "label": "Pengaturan", "description": "Preferensi app, manajemen dompet, status API, dan import/export data." }
+    },
+    "items": {
+      "wallet": {
+        "overview": { "label": "Ringkasan", "description": "Net worth, alokasi, aktivitas terbaru." },
+        "tokens": { "label": "Token", "description": "Semua saldo ERC-20 dengan nilai USD." },
+        "positions": { "label": "Posisi DeFi", "description": "Eksposur lending, LP, dan staking." },
+        "nfts": { "label": "NFT", "description": "Koleksi yang dimiliki dengan estimasi floor." },
+        "history": { "label": "Riwayat Tx", "description": "Transaksi terbaru ter-decode." },
+        "pnl": { "label": "PnL", "description": "Profit & loss belum direalisasi vs pasar." },
+        "approvals": { "label": "Approval", "description": "Approval token yang masih aktif." },
+        "alerts": { "label": "Alert", "description": "Alert harga untuk watchlist-mu." }
+      },
+      "markets": {
+        "overview": { "label": "Ringkasan", "description": "Total cap, dominasi BTC/ETH, fear & greed." },
+        "heatmap": { "label": "Heatmap", "description": "Top 100 diwarnai berdasarkan perubahan 24 jam." },
+        "sectors": { "label": "Sektor", "description": "Kategori diurutkan berdasarkan kapitalisasi pasar." },
+        "stablecoins": { "label": "Stablecoin", "description": "Supply, peg, dan dominasi." },
+        "trending": { "label": "Trending", "description": "Koin paling dicari + pergerakan terbesar." }
+      },
+      "tokens": {
+        "index": { "label": "Semua Token", "description": "Universum token yang bisa di-sort dan di-filter." },
+        "new-listings": { "label": "Listing Baru", "description": "Pendatang mid-cap (rank > 100)." },
+        "categories": { "label": "Kategori", "description": "Token dikelompokkan per sektor." },
+        "compare": { "label": "Bandingkan", "description": "Perbandingan side-by-side." }
+      },
+      "defi": {
+        "protocols": { "label": "Protokol", "description": "Setiap protokol DeFi yang dilacak berdasarkan TVL." },
+        "yields": { "label": "Yield", "description": "APY live di berbagai chain dan pool." },
+        "lending": { "label": "Lending", "description": "Protokol khusus lending dan rate-nya." },
+        "dex": { "label": "Volume DEX", "description": "Volume trading per DEX." },
+        "categories": { "label": "Kategori", "description": "Sektor diurutkan berdasarkan aktivitas." }
+      },
+      "chains": {
+        "index": { "label": "Semua Chain", "description": "Setiap L1/L2 diurutkan berdasarkan TVL." },
+        "compare": { "label": "Bandingkan", "description": "Bandingkan TVL & riwayat." },
+        "bridges": { "label": "Bridge", "description": "Quote rute via LI.FI." }
+      },
+      "onchain": {
+        "wallet-lookup": { "label": "Wallet Lookup", "description": "Inspeksi alamat 0x manapun." },
+        "whale-watch": { "label": "Whale Watch", "description": "Transfer terbesar terbaru." },
+        "contract": { "label": "Kontrak", "description": "ABI & source code terverifikasi." },
+        "approval-checker": { "label": "Approval Checker", "description": "Approval token yang berisiko." }
+      },
+      "nft": {
+        "trending": { "label": "Trending", "description": "Koleksi teratas berdasarkan volume 24 jam." },
+        "floor-radar": { "label": "Floor Radar", "description": "Pantau floor untuk watchlist-mu." },
+        "calendar": { "label": "Kalender", "description": "Mint & rilis mendatang." }
+      },
+      "news": {
+        "index": { "label": "Berita Terbaru", "description": "Semua headline terbaru." },
+        "categories": { "label": "Kategori", "description": "Filter berita berdasarkan topik." },
+        "sentiment": { "label": "Sentimen", "description": "Riwayat Fear & Greed." }
+      },
+      "tools": {
+        "gas": { "label": "Gas", "description": "Gas ETH live + estimasi biaya." },
+        "converter": { "label": "Konverter", "description": "FX live token ke token." },
+        "swap-simulator": { "label": "Simulator Swap", "description": "Pratinjau kuotasi 1inch." },
+        "il-calculator": { "label": "Kalkulator IL", "description": "Bantuan impermanent loss." },
+        "dca": { "label": "Backtest DCA", "description": "Putar ulang strategi beli berkala." }
+      },
+      "settings": {
+        "general": { "label": "Umum", "description": "Tema, mata uang, lokal." },
+        "wallet": { "label": "Dompet", "description": "Connect / disconnect dompet." },
+        "api": { "label": "Status API", "description": "Status backend & upstream." },
+        "data": { "label": "Data", "description": "Cache lokal & ekspor." }
+      }
+    }
+  }
+}

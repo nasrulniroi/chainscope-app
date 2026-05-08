@@ -33,9 +33,6 @@ export function AppShell() {
             <Outlet />
           </ErrorBoundary>
         </main>
-        <footer className="border-t border-border px-4 py-3 text-xs text-muted-foreground">
-          Built with free public APIs · CoinGecko · DefiLlama · Etherscan · alternative.me · CryptoCompare · Reservoir · LI.FI · 1inch
-        </footer>
       </div>
     </div>
   );

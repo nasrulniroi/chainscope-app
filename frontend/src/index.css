@@ -3,57 +3,59 @@
 @tailwind utilities;
 
 @layer base {
+  /* Theme: warm amber accent on cool slate — terminal-inspired, no green primary.
+     Hue/sat/lightness tuples are HSL components passed to hsl(var(--token)). */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 220 25% 98%;
+    --foreground: 222 35% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 35% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 142 71% 45%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --success: 142 71% 45%;
+    --popover-foreground: 222 35% 12%;
+    --primary: 32 95% 50%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 220 25% 94%;
+    --secondary-foreground: 222 35% 16%;
+    --muted: 220 25% 95%;
+    --muted-foreground: 220 12% 45%;
+    --accent: 220 25% 94%;
+    --accent-foreground: 222 35% 16%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 158 64% 42%;
     --success-foreground: 0 0% 100%;
     --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --warning-foreground: 222 47% 11%;
+    --border: 220 18% 86%;
+    --input: 220 18% 86%;
+    --ring: 32 95% 50%;
     --radius: 0.6rem;
   }
 
   .dark {
-    --background: 222 28% 6%;
-    --foreground: 210 40% 96%;
-    --card: 222 28% 8%;
-    --card-foreground: 210 40% 96%;
-    --popover: 222 28% 8%;
-    --popover-foreground: 210 40% 96%;
-    --primary: 142 71% 45%;
+    --background: 222 28% 7%;
+    --foreground: 213 30% 94%;
+    --card: 222 25% 10%;
+    --card-foreground: 213 30% 94%;
+    --popover: 222 25% 10%;
+    --popover-foreground: 213 30% 94%;
+    --primary: 36 95% 58%;
     --primary-foreground: 222 47% 11%;
-    --secondary: 222 25% 14%;
-    --secondary-foreground: 210 40% 96%;
-    --muted: 222 25% 12%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 222 25% 16%;
-    --accent-foreground: 210 40% 96%;
-    --destructive: 0 73% 50%;
-    --destructive-foreground: 210 40% 98%;
-    --success: 142 71% 45%;
-    --success-foreground: 0 0% 100%;
-    --warning: 38 92% 55%;
-    --warning-foreground: 0 0% 100%;
-    --border: 222 25% 16%;
-    --input: 222 25% 16%;
-    --ring: 142 71% 45%;
+    --secondary: 222 22% 15%;
+    --secondary-foreground: 213 30% 94%;
+    --muted: 222 22% 13%;
+    --muted-foreground: 215 16% 65%;
+    --accent: 222 22% 17%;
+    --accent-foreground: 213 30% 94%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 213 40% 98%;
+    --success: 158 60% 50%;
+    --success-foreground: 222 47% 11%;
+    --warning: 38 92% 60%;
+    --warning-foreground: 222 47% 11%;
+    --border: 222 22% 18%;
+    --input: 222 22% 18%;
+    --ring: 36 95% 58%;
   }
 
   * {

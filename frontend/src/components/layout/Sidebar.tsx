@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { ChevronDown, ChevronLeft, ChevronRight, Home, LineChart } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import { NAV_SECTIONS, findRouteByPath } from "@/routes/config";
 import type { RouteSection } from "@/routes/config";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { safeLocalStorageGet, safeLocalStorageSet } from "@/lib/storage";
+import { leafSlug } from "@/i18n";
 
 interface Props {
   collapsed: boolean;
@@ -18,6 +20,7 @@ const OPEN_ID_KEY = "dcc_sidebar_open_id_v2";
 
 export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
   const location = useLocation();
+  const { t } = useTranslation();
   const activeSectionId = useMemo(() => {
     const { section } = findRouteByPath(location.pathname);
     return section?.id ?? null;
@@ -80,15 +83,18 @@ export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
               collapsed && "justify-center",
             )
           }
-          title="Home"
+          title={t("nav.home")}
         >
           <Home className="h-4 w-4 flex-shrink-0" />
-          {!collapsed && <span>Home</span>}
+          {!collapsed && <span>{t("nav.home")}</span>}
         </NavLink>
         {visibleSections.map((section) => {
           const isOpen = openId === section.id;
           const isActive = activeSectionId === section.id;
           const SectionIcon = section.icon;
+          const sectionLabel = t(`nav.sections.${section.id}.label`, {
+            defaultValue: section.label,
+          });
           return (
             <div key={section.id} className="mb-0.5">
               <div
@@ -105,11 +111,11 @@ export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
                     "flex flex-1 items-center gap-2 rounded-l-md px-2 py-1.5 text-sm font-medium",
                     collapsed && "justify-center rounded-md",
                   )}
-                  title={section.label}
+                  title={sectionLabel}
                   onClick={() => setOpenId(section.id)}
                 >
                   <SectionIcon className="h-4 w-4 flex-shrink-0" />
-                  {!collapsed && <span className="truncate">{section.label}</span>}
+                  {!collapsed && <span className="truncate">{sectionLabel}</span>}
                 </Link>
                 {!collapsed && (
                   <button
@@ -118,7 +124,7 @@ export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
                       e.stopPropagation();
                       toggle(section.id);
                     }}
-                    aria-label={isOpen ? `Collapse ${section.label}` : `Expand ${section.label}`}
+                    aria-label={isOpen ? `Collapse ${sectionLabel}` : `Expand ${sectionLabel}`}
                     className="flex w-7 items-center justify-center rounded-r-md text-muted-foreground hover:bg-accent hover:text-foreground"
                   >
                     <ChevronDown
@@ -134,6 +140,10 @@ export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
                 <ul className="mt-0.5 space-y-0.5 border-l border-border/60 pl-2">
                   {section.items.map((item) => {
                     const Icon = item.icon ?? section.icon;
+                    const slug = leafSlug(section.basePath, item.to);
+                    const itemLabel = t(`nav.items.${section.id}.${slug}.label`, {
+                      defaultValue: item.label,
+                    });
                     return (
                       <li key={item.to}>
                         <NavLink
@@ -147,10 +157,10 @@ export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
                                 : "text-muted-foreground hover:bg-accent hover:text-foreground",
                             )
                           }
-                          title={item.label}
+                          title={itemLabel}
                         >
                           <Icon className="h-3.5 w-3.5 flex-shrink-0" />
-                          <span className="truncate">{item.label}</span>
+                          <span className="truncate">{itemLabel}</span>
                         </NavLink>
                       </li>
                     );

@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Moon, Search, Sun } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useSettings } from "@/providers/SettingsProvider";
 import { findRouteByPath } from "@/routes/config";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { leafSlug } from "@/i18n";
 
 export function Topbar() {
   const { theme, toggleTheme } = useSettings();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState("");
@@ -17,13 +21,21 @@ export function Topbar() {
 
   useEffect(() => {
     const { section, leaf } = findRouteByPath(location.pathname);
-    const parts: { label: string; to?: string }[] = [{ label: "Home", to: "/" }];
+    const parts: { label: string; to?: string }[] = [{ label: t("nav.home"), to: "/" }];
     if (section) {
-      parts.push({ label: section.label, to: section.items[0]?.to ?? section.basePath });
+      parts.push({
+        label: t(`nav.sections.${section.id}.label`, { defaultValue: section.label }),
+        to: section.landingPath,
+      });
     }
-    if (leaf) parts.push({ label: leaf.label });
+    if (leaf && section) {
+      const slug = leafSlug(section.basePath, leaf.to);
+      parts.push({
+        label: t(`nav.items.${section.id}.${slug}.label`, { defaultValue: leaf.label }),
+      });
+    }
     setCrumbs(parts);
-  }, [location.pathname]);
+  }, [location.pathname, t]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,16 +70,18 @@ export function Topbar() {
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search token or address (0x…)"
+            placeholder={t("topbar.searchPlaceholder")}
             className="h-8 w-72 pl-8"
-            aria-label="Global search"
+            aria-label={t("topbar.searchPlaceholder")}
           />
         </div>
       </form>
+      <LanguageSwitcher />
       <Button
         variant="ghost"
         size="icon"
-        aria-label="Toggle theme"
+        aria-label={t("topbar.themeToggle")}
+        title={t("topbar.themeToggle")}
         onClick={toggleTheme}
         className="h-8 w-8"
       >

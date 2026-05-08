@@ -1,0 +1,113 @@
+{
+  "common": {
+    "viewAll": "View all",
+    "loading": "Loading…",
+    "error": "Failed to load",
+    "open": "Open",
+    "language": "Language"
+  },
+  "topbar": {
+    "searchPlaceholder": "Search token or address (0x…)",
+    "themeToggle": "Toggle theme",
+    "languageToggle": "Change language"
+  },
+  "home": {
+    "title": "DeFi Command Center",
+    "tagline": "A free, multi-chain Web3 terminal — markets, DeFi, on-chain tools and your wallet, in one place.",
+    "metric": {
+      "totalMarketCap": "Total Market Cap",
+      "volume24h": "24h Volume",
+      "btcDominance": "BTC Dominance",
+      "ethDominanceHint": "ETH {{value}}%",
+      "fearGreed": "Fear & Greed",
+      "fearGreedSource": "Source: alternative.me"
+    },
+    "topByMcap": "Top by Market Cap",
+    "liveGas": "Live Gas (Ethereum)",
+    "gas": { "slow": "Slow", "std": "Std", "fast": "Fast", "baseFee": "Base fee", "block": "Block" },
+    "openGasTools": "Open gas tools →",
+    "browseTitle": "Browse the terminal",
+    "browseSub": "Pick a hub to dive in. Each hub opens its own page with the related tools — nothing else clutters the screen."
+  },
+  "nav": {
+    "home": "Home",
+    "sections": {
+      "wallet": { "label": "My Wallet", "description": "Connect once, see everything: holdings, NFTs, DeFi positions, history, PnL, approvals, and alerts." },
+      "markets": { "label": "Markets", "description": "Macro view of crypto: market cap, dominance, heatmaps, sectors, stablecoins, and trending coins." },
+      "tokens": { "label": "Tokens", "description": "Browse, filter, and compare every token tracked by CoinGecko, with detail pages for each one." },
+      "defi": { "label": "DeFi", "description": "Live DeFi data from DefiLlama: TVL, yields, lending markets, DEX volumes, and category breakdowns." },
+      "chains": { "label": "Chains", "description": "Chain-level analytics, side-by-side comparison, and a bridge router across L1s and L2s." },
+      "onchain": { "label": "On-Chain Tools", "description": "Power-user utilities: lookup any address, watch whale flows, inspect contracts, audit approvals." },
+      "nft": { "label": "NFT", "description": "NFT market overview powered by Reservoir: trending collections, floor radar, drop calendar." },
+      "news": { "label": "News & Sentiment", "description": "Latest crypto headlines from CryptoCompare, Cointelegraph, and Bitcoin Magazine, plus market sentiment." },
+      "tools": { "label": "Tools", "description": "Practical calculators and live data: gas tracker, swap quotes, IL calculator, DCA backtest." },
+      "settings": { "label": "Settings", "description": "App preferences, wallet management, upstream API health, and data import/export." }
+    },
+    "items": {
+      "wallet": {
+        "overview": { "label": "Overview", "description": "Net worth, allocation, recent activity." },
+        "tokens": { "label": "Tokens", "description": "All ERC-20 balances with USD values." },
+        "positions": { "label": "DeFi Positions", "description": "Lending, LPing, staking exposures." },
+        "nfts": { "label": "NFTs", "description": "Collections owned with floor estimates." },
+        "history": { "label": "Tx History", "description": "Recent transactions decoded." },
+        "pnl": { "label": "PnL", "description": "Unrealized profit & loss vs market." },
+        "approvals": { "label": "Approvals", "description": "Outstanding token approvals." },
+        "alerts": { "label": "Alerts", "description": "Watchlist price alerts." }
+      },
+      "markets": {
+        "overview": { "label": "Overview", "description": "Total cap, BTC/ETH dominance, fear & greed." },
+        "heatmap": { "label": "Heatmap", "description": "Top 100 coloured by 24h change." },
+        "sectors": { "label": "Sectors", "description": "Categories ranked by market cap." },
+        "stablecoins": { "label": "Stablecoins", "description": "Supply, peg, and dominance." },
+        "trending": { "label": "Trending", "description": "Searched coins + biggest movers." }
+      },
+      "tokens": {
+        "index": { "label": "All Tokens", "description": "Sortable, filterable token universe." },
+        "new-listings": { "label": "New Listings", "description": "Mid-cap newcomers (rank > 100)." },
+        "categories": { "label": "Categories", "description": "Tokens grouped by sector." },
+        "compare": { "label": "Compare", "description": "Side-by-side comparison." }
+      },
+      "defi": {
+        "protocols": { "label": "Protocols", "description": "Every tracked DeFi protocol by TVL." },
+        "yields": { "label": "Yields", "description": "Live APYs across chains and pools." },
+        "lending": { "label": "Lending", "description": "Lending-only protocols and rates." },
+        "dex": { "label": "DEX Volumes", "description": "Trading volume by DEX." },
+        "categories": { "label": "Categories", "description": "Sectors ranked by activity." }
+      },
+      "chains": {
+        "index": { "label": "All Chains", "description": "Every L1/L2 ranked by TVL." },
+        "compare": { "label": "Compare", "description": "Compare TVL & history." },
+        "bridges": { "label": "Bridges", "description": "Quote routes via LI.FI." }
+      },
+      "onchain": {
+        "wallet-lookup": { "label": "Wallet Lookup", "description": "Inspect any 0x address." },
+        "whale-watch": { "label": "Whale Watch", "description": "Largest recent transfers." },
+        "contract": { "label": "Contract", "description": "ABI & verified source code." },
+        "approval-checker": { "label": "Approval Checker", "description": "Risky token approvals." }
+      },
+      "nft": {
+        "trending": { "label": "Trending", "description": "Top collections by 24h volume." },
+        "floor-radar": { "label": "Floor Radar", "description": "Track floor for your watchlist." },
+        "calendar": { "label": "Calendar", "description": "Upcoming mints & releases." }
+      },
+      "news": {
+        "index": { "label": "Latest News", "description": "All recent headlines." },
+        "categories": { "label": "Categories", "description": "Filter news by topic." },
+        "sentiment": { "label": "Sentiment", "description": "Fear & Greed history." }
+      },
+      "tools": {
+        "gas": { "label": "Gas", "description": "Live ETH gas + cost estimates." },
+        "converter": { "label": "Converter", "description": "Token-to-token live FX." },
+        "swap-simulator": { "label": "Swap Simulator", "description": "1inch quote previews." },
+        "il-calculator": { "label": "IL Calculator", "description": "Impermanent loss helper." },
+        "dca": { "label": "DCA Backtest", "description": "Replay a periodic buy strategy." }
+      },
+      "settings": {
+        "general": { "label": "General", "description": "Theme, currency, locale." },
+        "wallet": { "label": "Wallet", "description": "Connect / disconnect wallets." },
+        "api": { "label": "API Health", "description": "Backend & upstream status." },
+        "data": { "label": "Data", "description": "Local cache & export." }
+      }
+    }
+  }
+}
