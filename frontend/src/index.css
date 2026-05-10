@@ -65,6 +65,11 @@
   }
   html {
     color-scheme: dark;
+    /* Always reserve space for the vertical scrollbar so the topbar and main
+       content don't shift horizontally when navigating between pages of
+       different heights (some pages need a scrollbar, others don't). */
+    scrollbar-gutter: stable;
+    overflow-y: scroll;
   }
   body {
     @apply bg-background text-foreground antialiased;
@@ -72,6 +77,8 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* min-h-screen + scrollbar-gutter cooperate to keep layout stable. */
+    min-height: 100vh;
   }
   h1,
   h2,

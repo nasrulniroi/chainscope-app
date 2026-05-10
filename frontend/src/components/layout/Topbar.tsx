@@ -49,7 +49,7 @@ export function Topbar() {
   };
 
   return (
-    <header className="sticky top-0 z-30 flex h-12 items-center gap-2 border-b border-border bg-background/90 px-4 backdrop-blur">
+    <header className="sticky top-0 z-30 flex h-12 flex-shrink-0 items-center gap-2 border-b border-border bg-background/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <nav className="flex items-center gap-1.5 text-xs text-muted-foreground">
         {crumbs.map((c, idx) => (
           <span key={idx} className="flex items-center gap-1.5">
