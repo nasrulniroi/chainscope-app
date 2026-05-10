@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatNumber(value: number | null | undefined, opts?: Intl.NumberFormatOptions) {
-  if (value === null || value === undefined || Number.isNaN(value)) return "—";
+  if (value === null || value === undefined || Number.isNaN(value)) return "-";
   return new Intl.NumberFormat("en-US", {
     maximumFractionDigits: 2,
     ...opts,
@@ -14,7 +14,7 @@ export function formatNumber(value: number | null | undefined, opts?: Intl.Numbe
 }
 
 export function formatCurrency(value: number | null | undefined, currency = "USD") {
-  if (value === null || value === undefined || Number.isNaN(value)) return "—";
+  if (value === null || value === undefined || Number.isNaN(value)) return "-";
   const abs = Math.abs(value);
   const fractionDigits = abs >= 100 ? 2 : abs >= 1 ? 4 : abs >= 0.01 ? 5 : 8;
   return new Intl.NumberFormat("en-US", {
@@ -26,7 +26,7 @@ export function formatCurrency(value: number | null | undefined, currency = "USD
 }
 
 export function formatCompact(value: number | null | undefined, currency?: string) {
-  if (value === null || value === undefined || Number.isNaN(value)) return "—";
+  if (value === null || value === undefined || Number.isNaN(value)) return "-";
   const formatter = new Intl.NumberFormat("en-US", {
     notation: "compact",
     maximumFractionDigits: 2,
@@ -38,7 +38,7 @@ export function formatCompact(value: number | null | undefined, currency?: strin
 }
 
 export function formatPct(value: number | null | undefined, digits = 2) {
-  if (value === null || value === undefined || Number.isNaN(value)) return "—";
+  if (value === null || value === undefined || Number.isNaN(value)) return "-";
   const sign = value > 0 ? "+" : "";
   return `${sign}${value.toFixed(digits)}%`;
 }

@@ -119,7 +119,7 @@ export function TokenDetailPage() {
                 <CardTitle>Stats</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm">
-                <Row label="Rank" value={detail.data.market_cap_rank ? `#${detail.data.market_cap_rank}` : "—"} />
+                <Row label="Rank" value={detail.data.market_cap_rank ? `#${detail.data.market_cap_rank}` : "-"} />
                 <Row label="Market cap" value={formatCompact(detail.data.market_cap, "USD")} />
                 <Row label="Fully diluted" value={formatCompact(detail.data.fully_diluted_valuation, "USD")} />
                 <Row label="24h volume" value={formatCompact(detail.data.total_volume, "USD")} />

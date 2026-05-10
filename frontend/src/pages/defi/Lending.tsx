@@ -53,7 +53,7 @@ export function DefiLendingPage() {
       label: "Supply APY",
       align: "right",
       render: (r) => (
-        <span className="num font-semibold text-emerald-300">{r.apy === null ? "—" : `${r.apy.toFixed(2)}%`}</span>
+        <span className="num font-semibold text-emerald-300">{r.apy === null ? "-" : `${r.apy.toFixed(2)}%`}</span>
       ),
       sortable: true,
       sortValue: (r) => r.apy ?? null,
@@ -61,7 +61,7 @@ export function DefiLendingPage() {
     {
       key: "exposure",
       label: "Exposure",
-      render: (r) => <span className="text-xs uppercase text-muted-foreground">{r.exposure ?? "—"}</span>,
+      render: (r) => <span className="text-xs uppercase text-muted-foreground">{r.exposure ?? "-"}</span>,
     },
   ];
 

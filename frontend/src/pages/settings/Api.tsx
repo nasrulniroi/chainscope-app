@@ -33,7 +33,7 @@ export function SettingsApiPage() {
                       <td className="px-3 py-2">
                         {c.ok ? <Badge variant="success">ok</Badge> : <Badge variant="destructive">fail</Badge>}
                       </td>
-                      <td className="px-3 py-2 text-xs text-muted-foreground">{c.error ?? "—"}</td>
+                      <td className="px-3 py-2 text-xs text-muted-foreground">{c.error ?? "-"}</td>
                     </tr>
                   ))}
                 </tbody>

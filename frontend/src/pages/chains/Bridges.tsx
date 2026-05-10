@@ -129,15 +129,15 @@ export function ChainsBridgesPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Duration</span>
-                  <span className="num">{r.estimate.durationSec ? `${Math.round(r.estimate.durationSec / 60)}m` : "—"}</span>
+                  <span className="num">{r.estimate.durationSec ? `${Math.round(r.estimate.durationSec / 60)}m` : "-"}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Bridge fee (USD)</span>
-                  <span className="num">{r.estimate.feeUsd ? `$${r.estimate.feeUsd.toFixed(2)}` : "—"}</span>
+                  <span className="num">{r.estimate.feeUsd ? `$${r.estimate.feeUsd.toFixed(2)}` : "-"}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Gas (USD)</span>
-                  <span className="num">{r.estimate.gasUsd ? `$${r.estimate.gasUsd.toFixed(2)}` : "—"}</span>
+                  <span className="num">{r.estimate.gasUsd ? `$${r.estimate.gasUsd.toFixed(2)}` : "-"}</span>
                 </div>
               </CardContent>
             </Card>

@@ -1,9 +1,9 @@
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Wallet } from "lucide-react";
 import type { ReactNode } from "react";
 import { useAccount } from "wagmi";
 
 import { Card, CardContent } from "@/components/ui/card";
+import { ConnectWalletButton } from "@/components/wallet/ConnectWalletButton";
 
 interface Props {
   children: (address: `0x${string}`) => ReactNode;
@@ -21,7 +21,7 @@ export function RequireWallet({ children }: Props) {
             Connect with MetaMask, WalletConnect, Coinbase Wallet or any RainbowKit-supported
             provider. We never request signing for read-only views.
           </p>
-          <ConnectButton />
+          <ConnectWalletButton variant="default" />
         </CardContent>
       </Card>
     );

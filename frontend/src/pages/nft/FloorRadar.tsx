@@ -31,7 +31,7 @@ export function NftFloorRadarPage() {
                 <div className="min-w-0 flex-1">
                   <div className="truncate text-sm font-medium">{c.name}</div>
                   <div className="text-xs text-muted-foreground">
-                    Floor {c.floor_eth ? `${c.floor_eth.toFixed(3)} Ξ` : "—"}
+                    Floor {c.floor_eth ? `${c.floor_eth.toFixed(3)} Ξ` : "-"}
                   </div>
                 </div>
                 <div className={`num text-sm font-semibold ${changeColor(c.floor_change_24h)}`}>

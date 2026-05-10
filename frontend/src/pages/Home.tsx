@@ -43,7 +43,7 @@ export function HomePage() {
             label={t("home.metric.btcDominance")}
             value={`${(global.data?.btc_dominance ?? 0).toFixed(2)}%`}
             hint={t("home.metric.ethDominanceHint", {
-              value: global.data?.eth_dominance?.toFixed(2) ?? "—",
+              value: global.data?.eth_dominance?.toFixed(2) ?? "-",
             })}
           />
           <MetricCard
@@ -51,7 +51,7 @@ export function HomePage() {
             value={
               global.data?.fear_greed
                 ? `${global.data.fear_greed.value} · ${global.data.fear_greed.classification}`
-                : "—"
+                : "-"
             }
             hint={t("home.metric.fearGreedSource")}
           />
@@ -108,26 +108,26 @@ export function HomePage() {
               <div className="grid grid-cols-3 gap-2 text-center">
                 <div className="rounded-md border border-border/60 p-2">
                   <div className="text-[10px] uppercase text-muted-foreground">{t("home.gas.slow")}</div>
-                  <div className="num text-base font-semibold">{gas.data?.safe ?? "—"}</div>
+                  <div className="num text-base font-semibold">{gas.data?.safe ?? "-"}</div>
                 </div>
                 <div className="rounded-md border border-primary/40 bg-primary/10 p-2">
                   <div className="text-[10px] uppercase text-muted-foreground">{t("home.gas.std")}</div>
-                  <div className="num text-base font-semibold">{gas.data?.propose ?? "—"}</div>
+                  <div className="num text-base font-semibold">{gas.data?.propose ?? "-"}</div>
                 </div>
                 <div className="rounded-md border border-border/60 p-2">
                   <div className="text-[10px] uppercase text-muted-foreground">{t("home.gas.fast")}</div>
-                  <div className="num text-base font-semibold">{gas.data?.fast ?? "—"}</div>
+                  <div className="num text-base font-semibold">{gas.data?.fast ?? "-"}</div>
                 </div>
               </div>
               <div className="flex justify-between text-[11px] text-muted-foreground">
                 <span>{t("home.gas.baseFee")}</span>
                 <span className="num">
-                  {gas.data?.base_fee ? `${gas.data.base_fee.toFixed(2)} gwei` : "—"}
+                  {gas.data?.base_fee ? `${gas.data.base_fee.toFixed(2)} gwei` : "-"}
                 </span>
               </div>
               <div className="flex justify-between text-[11px] text-muted-foreground">
                 <span>{t("home.gas.block")}</span>
-                <span className="num">{gas.data?.block ?? "—"}</span>
+                <span className="num">{gas.data?.block ?? "-"}</span>
               </div>
               <Link to="/tools/gas" className="block text-right text-xs text-primary hover:underline">
                 {t("home.openGasTools")}

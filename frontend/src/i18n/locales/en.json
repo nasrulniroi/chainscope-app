@@ -1,19 +1,19 @@
 {
   "common": {
     "viewAll": "View all",
-    "loading": "Loading…",
+    "loading": "Loading...",
     "error": "Failed to load",
     "open": "Open",
     "language": "Language"
   },
   "topbar": {
-    "searchPlaceholder": "Search token or address (0x…)",
+    "searchPlaceholder": "Search token or address (0x...)",
     "themeToggle": "Toggle theme",
     "languageToggle": "Change language"
   },
   "home": {
     "title": "DeFi Command Center",
-    "tagline": "A free, multi-chain Web3 terminal — markets, DeFi, on-chain tools and your wallet, in one place.",
+    "tagline": "A free, multi-chain Web3 terminal: markets, DeFi, on-chain tools and your wallet, in one place.",
     "metric": {
       "totalMarketCap": "Total Market Cap",
       "volume24h": "24h Volume",
@@ -25,9 +25,9 @@
     "topByMcap": "Top by Market Cap",
     "liveGas": "Live Gas (Ethereum)",
     "gas": { "slow": "Slow", "std": "Std", "fast": "Fast", "baseFee": "Base fee", "block": "Block" },
-    "openGasTools": "Open gas tools →",
+    "openGasTools": "Open gas tools",
     "browseTitle": "Browse the terminal",
-    "browseSub": "Pick a hub to dive in. Each hub opens its own page with the related tools — nothing else clutters the screen."
+    "browseSub": "Pick a hub to dive in. Each hub opens its own page with the related tools, nothing else clutters the screen."
   },
   "nav": {
     "home": "Home",

@@ -20,8 +20,8 @@ export function AppShell() {
   }, [collapsed]);
 
   return (
-    <div className="relative flex min-h-screen bg-background text-foreground">
-      {/* Atmospheric layers — never block input, sit behind everything else. */}
+    <div className="relative flex min-h-screen items-start bg-background text-foreground">
+      {/* Atmospheric layers: never block input, sit behind everything else. */}
       <div className="ambient-mesh" aria-hidden />
       <div className="ambient-grain" aria-hidden />
       <Sidebar
@@ -29,7 +29,7 @@ export function AppShell() {
         onToggle={() => setCollapsed((prev) => !prev)}
         walletConnected={isConnected}
       />
-      <div className="relative z-10 flex min-h-screen flex-1 flex-col">
+      <div className="relative z-10 flex min-h-screen min-w-0 flex-1 flex-col">
         <Topbar />
         <main className="flex-1 overflow-x-hidden px-4 py-5 md:px-8 md:py-7">
           <ErrorBoundary>

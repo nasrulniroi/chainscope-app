@@ -39,27 +39,27 @@ export function ToolsGasPage() {
           <Card>
             <CardContent className="pt-4">
               <div className="text-xs uppercase text-muted-foreground">Safe</div>
-              <div className="num text-2xl font-semibold">{oracle.data?.safe?.toFixed(0) ?? "—"} gwei</div>
+              <div className="num text-2xl font-semibold">{oracle.data?.safe?.toFixed(0) ?? "-"} gwei</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-4">
               <div className="text-xs uppercase text-muted-foreground">Average</div>
-              <div className="num text-2xl font-semibold">{oracle.data?.propose?.toFixed(0) ?? "—"} gwei</div>
+              <div className="num text-2xl font-semibold">{oracle.data?.propose?.toFixed(0) ?? "-"} gwei</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-4">
               <div className="text-xs uppercase text-muted-foreground">Fast</div>
-              <div className="num text-2xl font-semibold">{oracle.data?.fast?.toFixed(0) ?? "—"} gwei</div>
+              <div className="num text-2xl font-semibold">{oracle.data?.fast?.toFixed(0) ?? "-"} gwei</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-4">
               <div className="text-xs uppercase text-muted-foreground">Base fee</div>
-              <div className="num text-2xl font-semibold">{oracle.data?.base_fee?.toFixed(2) ?? "—"} gwei</div>
+              <div className="num text-2xl font-semibold">{oracle.data?.base_fee?.toFixed(2) ?? "-"} gwei</div>
               <div className="mt-1 text-xs text-muted-foreground">
-                ETH ${ethPrice ? ethPrice.toFixed(0) : "—"}
+                ETH ${ethPrice ? ethPrice.toFixed(0) : "-"}
               </div>
             </CardContent>
           </Card>
@@ -125,8 +125,8 @@ export function ToolsGasPage() {
                       <tr key={tx.name} className="border-t border-border/60">
                         <td className="px-3 py-2 font-medium">{tx.name}</td>
                         <td className="num px-3 py-2 text-right">{tx.gas.toLocaleString()}</td>
-                        <td className="num px-3 py-2 text-right">{avg ? `$${avg.toFixed(2)}` : "—"}</td>
-                        <td className="num px-3 py-2 text-right">{fast ? `$${fast.toFixed(2)}` : "—"}</td>
+                        <td className="num px-3 py-2 text-right">{avg ? `$${avg.toFixed(2)}` : "-"}</td>
+                        <td className="num px-3 py-2 text-right">{fast ? `$${fast.toFixed(2)}` : "-"}</td>
                       </tr>
                     );
                   })}

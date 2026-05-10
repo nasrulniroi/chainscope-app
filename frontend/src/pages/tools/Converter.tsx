@@ -85,10 +85,10 @@ export function ToolsConverterPage() {
                 {amount} {fromCoin?.symbol.toUpperCase() ?? "?"}
               </div>
               <div className="num text-2xl font-semibold">
-                ≈ {result !== null ? `${result.toFixed(6)} ${toCoin?.symbol.toUpperCase() ?? ""}` : "—"}
+                ≈ {result !== null ? `${result.toFixed(6)} ${toCoin?.symbol.toUpperCase() ?? ""}` : "-"}
               </div>
               <div className="mt-1 text-xs text-muted-foreground">
-                Fiat estimate: {fiatAmount !== null ? formatCurrency(fiatAmount) : "—"}
+                Fiat estimate: {fiatAmount !== null ? formatCurrency(fiatAmount) : "-"}
               </div>
             </div>
 
@@ -99,7 +99,7 @@ export function ToolsConverterPage() {
                   <div className="num">
                     {fiatAmount !== null
                       ? new Intl.NumberFormat("en-US", { style: "currency", currency: f }).format(fiatAmount)
-                      : "—"}
+                      : "-"}
                   </div>
                 </div>
               ))}

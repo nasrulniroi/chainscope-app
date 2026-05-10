@@ -1,0 +1,113 @@
+{
+  "common": {
+    "viewAll": "Ver todo",
+    "loading": "Cargando...",
+    "error": "Error al cargar",
+    "open": "Abrir",
+    "language": "Idioma"
+  },
+  "topbar": {
+    "searchPlaceholder": "Buscar token o dirección (0x...)",
+    "themeToggle": "Cambiar tema",
+    "languageToggle": "Cambiar idioma"
+  },
+  "home": {
+    "title": "DeFi Command Center",
+    "tagline": "Una terminal Web3 multicadena gratuita: mercados, DeFi, herramientas on-chain y tu billetera, todo en un solo lugar.",
+    "metric": {
+      "totalMarketCap": "Capitalización total",
+      "volume24h": "Volumen 24h",
+      "btcDominance": "Dominancia BTC",
+      "ethDominanceHint": "ETH {{value}}%",
+      "fearGreed": "Miedo y codicia",
+      "fearGreedSource": "Fuente: alternative.me"
+    },
+    "topByMcap": "Top por capitalización",
+    "liveGas": "Gas en vivo (Ethereum)",
+    "gas": { "slow": "Lento", "std": "Std", "fast": "Rápido", "baseFee": "Tarifa base", "block": "Bloque" },
+    "openGasTools": "Abrir herramientas de gas",
+    "browseTitle": "Explora la terminal",
+    "browseSub": "Elige un hub para entrar. Cada hub abre su propia página con las herramientas relacionadas, sin nada más que distraiga la pantalla."
+  },
+  "nav": {
+    "home": "Inicio",
+    "sections": {
+      "wallet": { "label": "Mi Billetera", "description": "Conéctate una vez y ve todo: tenencias, NFTs, posiciones DeFi, historial, PnL, aprobaciones y alertas." },
+      "markets": { "label": "Mercados", "description": "Vista macro de crypto: capitalización, dominancia, mapas de calor, sectores, stablecoins y monedas en tendencia." },
+      "tokens": { "label": "Tokens", "description": "Explora, filtra y compara cada token rastreado por CoinGecko, con páginas de detalle para cada uno." },
+      "defi": { "label": "DeFi", "description": "Datos DeFi en vivo de DefiLlama: TVL, rendimientos, mercados de préstamo, volúmenes de DEX y desgloses por categoría." },
+      "chains": { "label": "Cadenas", "description": "Análisis a nivel de cadena, comparación lado a lado y un router de puentes entre L1s y L2s." },
+      "onchain": { "label": "Herramientas On-Chain", "description": "Utilidades avanzadas: busca cualquier dirección, observa movimientos ballena, inspecciona contratos, audita aprobaciones." },
+      "nft": { "label": "NFT", "description": "Resumen de mercado NFT con tecnología de Reservoir: colecciones en tendencia, radar de pisos, calendario de drops." },
+      "news": { "label": "Noticias y Sentimiento", "description": "Últimas noticias crypto de CryptoCompare, Cointelegraph y Bitcoin Magazine, más sentimiento del mercado." },
+      "tools": { "label": "Herramientas", "description": "Calculadoras prácticas y datos en vivo: gas tracker, cotizaciones de swap, calculadora de IL, backtest de DCA." },
+      "settings": { "label": "Ajustes", "description": "Preferencias de la app, gestión de billeteras, salud de las APIs y exportación de datos." }
+    },
+    "items": {
+      "wallet": {
+        "overview": { "label": "Resumen", "description": "Patrimonio neto, asignación, actividad reciente." },
+        "tokens": { "label": "Tokens", "description": "Todos los saldos ERC-20 con valor en USD." },
+        "positions": { "label": "Posiciones DeFi", "description": "Exposición a lending, LP y staking." },
+        "nfts": { "label": "NFTs", "description": "Colecciones poseídas con estimaciones de piso." },
+        "history": { "label": "Historial Tx", "description": "Transacciones recientes decodificadas." },
+        "pnl": { "label": "PnL", "description": "Ganancias y pérdidas no realizadas vs mercado." },
+        "approvals": { "label": "Aprobaciones", "description": "Aprobaciones de tokens pendientes." },
+        "alerts": { "label": "Alertas", "description": "Alertas de precio para tu watchlist." }
+      },
+      "markets": {
+        "overview": { "label": "Resumen", "description": "Capitalización total, dominancia BTC/ETH, miedo y codicia." },
+        "heatmap": { "label": "Mapa de calor", "description": "Top 100 coloreado por cambio en 24h." },
+        "sectors": { "label": "Sectores", "description": "Categorías clasificadas por capitalización." },
+        "stablecoins": { "label": "Stablecoins", "description": "Oferta, paridad y dominancia." },
+        "trending": { "label": "Tendencias", "description": "Monedas buscadas + mayores movimientos." }
+      },
+      "tokens": {
+        "index": { "label": "Todos los tokens", "description": "Universo de tokens ordenable y filtrable." },
+        "new-listings": { "label": "Nuevos listados", "description": "Recién llegados de capitalización media (rank > 100)." },
+        "categories": { "label": "Categorías", "description": "Tokens agrupados por sector." },
+        "compare": { "label": "Comparar", "description": "Comparación lado a lado." }
+      },
+      "defi": {
+        "protocols": { "label": "Protocolos", "description": "Cada protocolo DeFi rastreado por TVL." },
+        "yields": { "label": "Rendimientos", "description": "APYs en vivo entre cadenas y pools." },
+        "lending": { "label": "Préstamos", "description": "Protocolos solo de lending y sus tasas." },
+        "dex": { "label": "Volúmenes DEX", "description": "Volumen de trading por DEX." },
+        "categories": { "label": "Categorías", "description": "Sectores clasificados por actividad." }
+      },
+      "chains": {
+        "index": { "label": "Todas las cadenas", "description": "Cada L1/L2 ordenada por TVL." },
+        "compare": { "label": "Comparar", "description": "Comparar TVL e historia." },
+        "bridges": { "label": "Puentes", "description": "Cotizar rutas vía LI.FI." }
+      },
+      "onchain": {
+        "wallet-lookup": { "label": "Búsqueda de Billetera", "description": "Inspecciona cualquier dirección 0x." },
+        "whale-watch": { "label": "Observador de ballenas", "description": "Transferencias más grandes recientes." },
+        "contract": { "label": "Contrato", "description": "ABI y código fuente verificado." },
+        "approval-checker": { "label": "Verificador de aprobaciones", "description": "Aprobaciones de tokens riesgosas." }
+      },
+      "nft": {
+        "trending": { "label": "Tendencia", "description": "Top colecciones por volumen 24h." },
+        "floor-radar": { "label": "Radar de pisos", "description": "Sigue el piso de tu watchlist." },
+        "calendar": { "label": "Calendario", "description": "Próximos mints y lanzamientos." }
+      },
+      "news": {
+        "index": { "label": "Últimas noticias", "description": "Todos los titulares recientes." },
+        "categories": { "label": "Categorías", "description": "Filtra noticias por tema." },
+        "sentiment": { "label": "Sentimiento", "description": "Historia de Miedo y codicia." }
+      },
+      "tools": {
+        "gas": { "label": "Gas", "description": "Gas de ETH en vivo + estimación de costo." },
+        "converter": { "label": "Conversor", "description": "Cambio token a token en vivo." },
+        "swap-simulator": { "label": "Simulador de Swap", "description": "Vista previa de cotizaciones 1inch." },
+        "il-calculator": { "label": "Calculadora IL", "description": "Ayudante de pérdida impermanente." },
+        "dca": { "label": "Backtest DCA", "description": "Reproduce una estrategia de compra periódica." }
+      },
+      "settings": {
+        "general": { "label": "General", "description": "Tema, moneda, idioma." },
+        "wallet": { "label": "Billetera", "description": "Conectar / desconectar billeteras." },
+        "api": { "label": "Salud de API", "description": "Estado de backend y servicios upstream." },
+        "data": { "label": "Datos", "description": "Caché local y exportación." }
+      }
+    }
+  }
+}

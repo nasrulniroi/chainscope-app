@@ -23,7 +23,7 @@ export function SettingsWalletPage() {
           <div className="flex items-center justify-between">
             <div className="text-sm">
               <div className="font-medium">
-                {account.isConnected ? account.address ? shortAddress(account.address) : "—" : "Not connected"}
+                {account.isConnected ? account.address ? shortAddress(account.address) : "-" : "Not connected"}
               </div>
               <div className="text-xs text-muted-foreground">
                 {account.connector?.name ?? "No connector"}

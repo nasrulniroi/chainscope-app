@@ -81,7 +81,7 @@ function Inner({ address }: { address: `0x${string}` }) {
       key: "value",
       label: "Value (native)",
       align: "right",
-      render: (r) => <span className="num">{r.value_eth?.toFixed(4) ?? "—"}</span>,
+      render: (r) => <span className="num">{r.value_eth?.toFixed(4) ?? "-"}</span>,
       sortable: true,
       sortValue: (r) => r.value_eth ?? null,
     },

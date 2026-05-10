@@ -37,11 +37,11 @@ function Inner({ address }: { address: `0x${string}` }) {
               </div>
               <div className="flex items-center justify-between text-xs">
                 <span className="text-muted-foreground">Floor</span>
-                <span className="num">{c.floor_eth ? `${c.floor_eth.toFixed(3)} Ξ` : "—"}</span>
+                <span className="num">{c.floor_eth ? `${c.floor_eth.toFixed(3)} Ξ` : "-"}</span>
               </div>
               <div className="flex items-center justify-between text-xs">
                 <span className="text-muted-foreground">Estimated value</span>
-                <span className="num">{c.value_eth ? `${formatCompact(c.value_eth)} Ξ` : "—"}</span>
+                <span className="num">{c.value_eth ? `${formatCompact(c.value_eth)} Ξ` : "-"}</span>
               </div>
             </CardContent>
           </Card>

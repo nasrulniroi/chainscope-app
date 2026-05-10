@@ -36,7 +36,7 @@ export function ChainsPage() {
     {
       key: "token",
       label: "Native",
-      render: (r) => <span className="text-xs uppercase">{r.tokenSymbol ?? "—"}</span>,
+      render: (r) => <span className="text-xs uppercase">{r.tokenSymbol ?? "-"}</span>,
     },
     {
       key: "tvl",
@@ -50,7 +50,7 @@ export function ChainsPage() {
       key: "id",
       label: "Chain ID",
       align: "right",
-      render: (r) => <span className="num text-xs text-muted-foreground">{r.chainId ?? "—"}</span>,
+      render: (r) => <span className="num text-xs text-muted-foreground">{r.chainId ?? "-"}</span>,
       sortable: true,
       sortValue: (r) => r.chainId ?? null,
     },

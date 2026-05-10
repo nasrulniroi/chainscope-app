@@ -26,7 +26,7 @@ function RainbowKitWrapper({ children }: { children: ReactNode }) {
       ? darkTheme({ accentColor: "#22d3ee", accentColorForeground: "#0a1116", borderRadius: "medium" })
       : lightTheme({ accentColor: "#0e7490", accentColorForeground: "#fbf8f1", borderRadius: "medium" });
   return (
-    <RainbowKitProvider theme={rkTheme} modalSize="compact">
+    <RainbowKitProvider theme={rkTheme} modalSize="compact" locale="en-US">
       {children}
     </RainbowKitProvider>
   );

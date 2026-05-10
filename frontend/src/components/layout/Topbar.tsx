@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Moon, Search, Sun } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -9,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { useSettings } from "@/providers/SettingsProvider";
 import { findRouteByPath } from "@/routes/config";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { ConnectWalletButton } from "@/components/wallet/ConnectWalletButton";
 import { leafSlug } from "@/i18n";
 
 export function Topbar() {
@@ -87,7 +87,7 @@ export function Topbar() {
       >
         {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
       </Button>
-      <ConnectButton accountStatus="avatar" chainStatus="icon" showBalance={false} />
+      <ConnectWalletButton />
     </header>
   );
 }
