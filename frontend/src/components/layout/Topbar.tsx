@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Moon, Search, Sun } from "lucide-react";
+import { Menu, Moon, Search, Sun } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,11 @@ import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { ConnectWalletButton } from "@/components/wallet/ConnectWalletButton";
 import { leafSlug } from "@/i18n";
 
-export function Topbar() {
+interface Props {
+  onOpenMobileMenu: () => void;
+}
+
+export function Topbar({ onOpenMobileMenu }: Props) {
   const { theme, toggleTheme } = useSettings();
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -48,9 +52,21 @@ export function Topbar() {
     }
   };
 
+  // On mobile we only show the last (most specific) breadcrumb so the row fits.
+  const mobileCrumb = crumbs[crumbs.length - 1];
+
   return (
-    <header className="sticky top-0 z-30 flex h-12 flex-shrink-0 items-center gap-2 border-b border-border bg-background/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <nav className="flex items-center gap-1.5 text-xs text-muted-foreground">
+    <header className="sticky top-0 z-30 flex h-12 flex-shrink-0 items-center gap-1.5 border-b border-border bg-background/95 px-2 backdrop-blur supports-[backdrop-filter]:bg-background/80 sm:gap-2 sm:px-4">
+      <Button
+        variant="ghost"
+        size="icon"
+        aria-label="Open menu"
+        onClick={onOpenMobileMenu}
+        className="h-8 w-8 flex-shrink-0 md:hidden"
+      >
+        <Menu className="h-5 w-5" />
+      </Button>
+      <nav className="hidden min-w-0 items-center gap-1.5 text-xs text-muted-foreground md:flex">
         {crumbs.map((c, idx) => (
           <span key={idx} className="flex items-center gap-1.5">
             {idx > 0 && <span className="text-muted-foreground/50">/</span>}
@@ -64,6 +80,9 @@ export function Topbar() {
           </span>
         ))}
       </nav>
+      <div className="min-w-0 flex-1 truncate text-sm font-medium text-foreground md:hidden">
+        {mobileCrumb?.label}
+      </div>
       <form onSubmit={handleSubmit} className="ml-auto hidden md:block">
         <div className="relative">
           <Search className="pointer-events-none absolute left-2.5 top-2 h-4 w-4 text-muted-foreground" />
@@ -83,7 +102,7 @@ export function Topbar() {
         aria-label={t("topbar.themeToggle")}
         title={t("topbar.themeToggle")}
         onClick={toggleTheme}
-        className="h-8 w-8"
+        className="h-8 w-8 flex-shrink-0"
       >
         {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
       </Button>

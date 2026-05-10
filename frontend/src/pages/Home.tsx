@@ -73,15 +73,15 @@ export function HomePage() {
                   <Link
                     key={c.id}
                     to={`/tokens/${c.id}`}
-                    className="flex items-center gap-3 rounded-md border border-border/60 bg-muted/20 p-2 transition hover:bg-accent"
+                    className="flex items-center gap-2 rounded-md border border-border/60 bg-muted/20 p-2 transition hover:bg-accent sm:gap-3"
                   >
                     <CoinThumb src={c.image} alt={c.symbol} size={28} />
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center justify-between gap-2 text-sm">
-                        <span className="truncate font-medium">{c.name}</span>
-                        <span className="num font-medium">{formatCurrency(c.current_price)}</span>
+                        <span className="min-w-0 truncate font-medium">{c.name}</span>
+                        <span className="num flex-shrink-0 font-medium">{formatCurrency(c.current_price)}</span>
                       </div>
-                      <div className="flex items-center justify-between text-xs text-muted-foreground">
+                      <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
                         <span className="uppercase">{c.symbol}</span>
                         <span className={`num ${changeColor(c.price_change_percentage_24h)}`}>
                           {formatPct(c.price_change_percentage_24h)}
@@ -91,6 +91,7 @@ export function HomePage() {
                     <Sparkline
                       data={c.sparkline_7d}
                       positive={(c.price_change_percentage_24h ?? 0) >= 0}
+                      className="hidden flex-shrink-0 sm:block"
                     />
                   </Link>
                 ))}

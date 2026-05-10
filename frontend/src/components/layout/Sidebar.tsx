@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
-import { ChevronDown, ChevronLeft, ChevronRight, Home, LineChart } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Home, LineChart, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { NAV_SECTIONS, findRouteByPath } from "@/routes/config";
@@ -11,14 +11,24 @@ import { safeLocalStorageGet, safeLocalStorageSet } from "@/lib/storage";
 import { leafSlug } from "@/i18n";
 
 interface Props {
+  /** Desktop-only: whether the sidebar is in icon-only (collapsed) mode. */
   collapsed: boolean;
-  onToggle: () => void;
+  onToggleCollapsed: () => void;
+  /** Mobile-only: whether the drawer is open. */
+  mobileOpen: boolean;
+  onMobileClose: () => void;
   walletConnected: boolean;
 }
 
 const OPEN_ID_KEY = "dcc_sidebar_open_id_v2";
 
-export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
+export function Sidebar({
+  collapsed,
+  onToggleCollapsed,
+  mobileOpen,
+  onMobileClose,
+  walletConnected,
+}: Props) {
   const location = useLocation();
   const { t } = useTranslation();
   const activeSectionId = useMemo(() => {
@@ -42,37 +52,132 @@ export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
     safeLocalStorageSet(OPEN_ID_KEY, openId);
   }, [openId]);
 
+  // Close the mobile drawer whenever the user navigates to a different route.
+  useEffect(() => {
+    if (mobileOpen) onMobileClose();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
+
   const toggle = (id: string) => setOpenId((prev) => (prev === id ? null : id));
 
   const visibleSections: RouteSection[] = NAV_SECTIONS.filter(
     (section) => !section.walletGated || walletConnected,
   );
 
+  // Mobile drawer is always expanded (full labels visible); desktop respects `collapsed`.
   return (
-    <aside
-      className={cn(
-        "sticky top-0 z-20 flex h-screen max-h-screen flex-shrink-0 flex-col self-start border-r border-border bg-card text-card-foreground transition-[width] duration-150",
-        collapsed ? "w-14" : "w-60",
-      )}
-    >
+    <>
+      {/* Mobile backdrop. Only visible when drawer is open. */}
+      <div
+        aria-hidden={!mobileOpen}
+        onClick={onMobileClose}
+        className={cn(
+          "fixed inset-0 z-30 bg-black/50 backdrop-blur-sm transition-opacity duration-200 md:hidden",
+          mobileOpen ? "opacity-100" : "pointer-events-none opacity-0",
+        )}
+      />
+      <aside
+        className={cn(
+          // Shared
+          "flex flex-col border-r border-border bg-card text-card-foreground",
+          // Mobile (drawer)
+          "fixed inset-y-0 left-0 z-40 w-64 max-w-[80vw] transform transition-transform duration-200 md:hidden",
+          mobileOpen ? "translate-x-0" : "-translate-x-full",
+        )}
+        aria-hidden={!mobileOpen}
+      >
+        <SidebarInner
+          collapsed={false}
+          showMobileClose
+          onMobileClose={onMobileClose}
+          onToggleCollapsed={onToggleCollapsed}
+          visibleSections={visibleSections}
+          openId={openId}
+          setOpenId={setOpenId}
+          toggle={toggle}
+          activeSectionId={activeSectionId}
+          t={t}
+        />
+      </aside>
+      <aside
+        className={cn(
+          // Desktop sidebar: sticky, takes layout space.
+          "sticky top-0 z-20 hidden h-screen max-h-screen flex-shrink-0 flex-col self-start border-r border-border bg-card text-card-foreground transition-[width] duration-150 md:flex",
+          collapsed ? "w-14" : "w-60",
+        )}
+      >
+        <SidebarInner
+          collapsed={collapsed}
+          showMobileClose={false}
+          onMobileClose={onMobileClose}
+          onToggleCollapsed={onToggleCollapsed}
+          visibleSections={visibleSections}
+          openId={openId}
+          setOpenId={setOpenId}
+          toggle={toggle}
+          activeSectionId={activeSectionId}
+          t={t}
+        />
+      </aside>
+    </>
+  );
+}
+
+interface InnerProps {
+  collapsed: boolean;
+  showMobileClose: boolean;
+  onMobileClose: () => void;
+  onToggleCollapsed: () => void;
+  visibleSections: RouteSection[];
+  openId: string | null;
+  setOpenId: (id: string | null) => void;
+  toggle: (id: string) => void;
+  activeSectionId: string | null;
+  t: (key: string, opts?: Record<string, unknown>) => string;
+}
+
+function SidebarInner({
+  collapsed,
+  showMobileClose,
+  onMobileClose,
+  onToggleCollapsed,
+  visibleSections,
+  openId,
+  setOpenId,
+  toggle,
+  activeSectionId,
+  t,
+}: InnerProps) {
+  return (
+    <>
       <div className="flex h-12 items-center justify-between border-b border-border px-3">
         <Link to="/" className="flex items-center gap-2">
           <LineChart className="h-5 w-5 text-primary" />
           {!collapsed && (
-            <span className="text-base font-semibold leading-none tracking-tight">
-              DCC
-            </span>
+            <span className="text-base font-semibold leading-none tracking-tight">DCC</span>
           )}
         </Link>
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label="Toggle sidebar"
-          onClick={onToggle}
-          className="h-7 w-7"
-        >
-          {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
-        </Button>
+        {showMobileClose ? (
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Close menu"
+            onClick={onMobileClose}
+            className="h-7 w-7"
+          >
+            <X className="h-4 w-4" />
+          </Button>
+        ) : (
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Toggle sidebar"
+            onClick={onToggleCollapsed}
+            className="h-7 w-7"
+          >
+            {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+          </Button>
+        )}
       </div>
       <nav className="scrollbar-thin flex-1 overflow-y-auto px-2 py-3">
         {!collapsed && <div className="label-eyebrow mb-2 px-2">Terminal</div>}
@@ -180,6 +285,6 @@ export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
       <div className="border-t border-border p-2 text-[10px] text-muted-foreground">
         <div className={cn("font-mono tracking-wide", collapsed && "text-center")}>DCC v0.1</div>
       </div>
-    </aside>
+    </>
   );
 }

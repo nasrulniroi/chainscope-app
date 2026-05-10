@@ -80,6 +80,17 @@
     /* min-h-screen + scrollbar-gutter cooperate to keep layout stable. */
     min-height: 100vh;
   }
+  /* Radix popovers/dropdowns/modals lock body scroll by setting
+     overflow:hidden + padding-right on <body> to compensate for the
+     disappearing scrollbar. We already keep the scrollbar slot via
+     scrollbar-gutter on <html>, so that compensation is unnecessary
+     and causes the content (topbar, page) to jump horizontally when a
+     dropdown like the language picker opens. Neutralize both. */
+  body[data-scroll-locked] {
+    overflow: visible !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
   h1,
   h2,
   h3 {
