@@ -114,7 +114,7 @@ export function ChainDetailPage() {
                           </Link>
                         </td>
                         <td className="px-3 py-2">
-                          {p.category ? <Badge variant="outline">{p.category}</Badge> : "—"}
+                          {p.category ? <Badge variant="outline">{p.category}</Badge> : "-"}
                         </td>
                         <td className="num px-3 py-2 text-right">{formatCompact(p.tvl, "USD")}</td>
                         <td className={`num px-3 py-2 text-right ${changeColor(p.change_1d)}`}>

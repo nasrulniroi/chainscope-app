@@ -1,0 +1,113 @@
+{
+  "common": {
+    "viewAll": "查看全部",
+    "loading": "加载中...",
+    "error": "加载失败",
+    "open": "打开",
+    "language": "语言"
+  },
+  "topbar": {
+    "searchPlaceholder": "搜索代币或地址 (0x...)",
+    "themeToggle": "切换主题",
+    "languageToggle": "更换语言"
+  },
+  "home": {
+    "title": "DeFi Command Center",
+    "tagline": "免费的多链 Web3 终端：行情、DeFi、链上工具和你的钱包，一站式集成。",
+    "metric": {
+      "totalMarketCap": "总市值",
+      "volume24h": "24 小时成交量",
+      "btcDominance": "BTC 市占率",
+      "ethDominanceHint": "ETH {{value}}%",
+      "fearGreed": "恐惧与贪婪",
+      "fearGreedSource": "来源: alternative.me"
+    },
+    "topByMcap": "按市值排名",
+    "liveGas": "实时 Gas (以太坊)",
+    "gas": { "slow": "慢", "std": "标准", "fast": "快", "baseFee": "基础费", "block": "区块" },
+    "openGasTools": "打开 Gas 工具",
+    "browseTitle": "浏览终端",
+    "browseSub": "挑选一个中心进入。每个中心拥有自己的页面与相关工具，画面不会被多余内容干扰。"
+  },
+  "nav": {
+    "home": "首页",
+    "sections": {
+      "wallet": { "label": "我的钱包", "description": "一次连接，一览全部：持仓、NFT、DeFi 仓位、历史、盈亏、授权与提醒。" },
+      "markets": { "label": "行情", "description": "加密宏观视图：总市值、市占率、热力图、板块、稳定币与热门币种。" },
+      "tokens": { "label": "代币", "description": "浏览、筛选并比较 CoinGecko 追踪的所有代币，每个都有详情页。" },
+      "defi": { "label": "DeFi", "description": "DefiLlama 实时 DeFi 数据：TVL、收益率、借贷市场、DEX 成交量和分类细分。" },
+      "chains": { "label": "链", "description": "链级分析、并排比较以及跨 L1 与 L2 的桥路由。" },
+      "onchain": { "label": "链上工具", "description": "进阶工具：查询任意地址、监控巨鲸、检查合约、审计授权。" },
+      "nft": { "label": "NFT", "description": "由 Reservoir 驱动的 NFT 市场概览：热门系列、地板雷达、Drop 日历。" },
+      "news": { "label": "新闻与情绪", "description": "来自 CryptoCompare、Cointelegraph 与 Bitcoin Magazine 的最新加密资讯及市场情绪。" },
+      "tools": { "label": "工具", "description": "实用计算器与实时数据：Gas 追踪器、Swap 报价、IL 计算器、DCA 回测。" },
+      "settings": { "label": "设置", "description": "应用偏好、钱包管理、API 健康状态及数据导入/导出。" }
+    },
+    "items": {
+      "wallet": {
+        "overview": { "label": "概览", "description": "净值、配置和最近活动。" },
+        "tokens": { "label": "代币", "description": "所有 ERC-20 余额及 USD 价值。" },
+        "positions": { "label": "DeFi 仓位", "description": "借贷、做市、质押敞口。" },
+        "nfts": { "label": "NFT", "description": "持有的系列及地板估值。" },
+        "history": { "label": "交易历史", "description": "解码后的最近交易。" },
+        "pnl": { "label": "盈亏", "description": "相对市场的未实现盈亏。" },
+        "approvals": { "label": "授权", "description": "未撤销的代币授权。" },
+        "alerts": { "label": "提醒", "description": "自选列表价格提醒。" }
+      },
+      "markets": {
+        "overview": { "label": "概览", "description": "总市值、BTC/ETH 市占率、恐惧与贪婪。" },
+        "heatmap": { "label": "热力图", "description": "前 100 按 24h 涨跌着色。" },
+        "sectors": { "label": "板块", "description": "按市值排名的分类。" },
+        "stablecoins": { "label": "稳定币", "description": "供应量、锚定与市占率。" },
+        "trending": { "label": "热门", "description": "搜索量榜单 + 最大涨跌。" }
+      },
+      "tokens": {
+        "index": { "label": "全部代币", "description": "可排序与筛选的代币宇宙。" },
+        "new-listings": { "label": "新上线", "description": "中市值新星 (排名 > 100)。" },
+        "categories": { "label": "分类", "description": "按板块分组的代币。" },
+        "compare": { "label": "对比", "description": "并排比较。" }
+      },
+      "defi": {
+        "protocols": { "label": "协议", "description": "按 TVL 追踪的所有 DeFi 协议。" },
+        "yields": { "label": "收益", "description": "跨链跨池的实时 APY。" },
+        "lending": { "label": "借贷", "description": "纯借贷协议与利率。" },
+        "dex": { "label": "DEX 成交量", "description": "按 DEX 的交易量。" },
+        "categories": { "label": "分类", "description": "按活跃度排名的板块。" }
+      },
+      "chains": {
+        "index": { "label": "全部链", "description": "按 TVL 排名的所有 L1/L2。" },
+        "compare": { "label": "对比", "description": "比较 TVL 与历史。" },
+        "bridges": { "label": "跨链桥", "description": "通过 LI.FI 报价路线。" }
+      },
+      "onchain": {
+        "wallet-lookup": { "label": "钱包查询", "description": "检查任意 0x 地址。" },
+        "whale-watch": { "label": "巨鲸监控", "description": "最近最大的转账。" },
+        "contract": { "label": "合约", "description": "ABI 与已验证源码。" },
+        "approval-checker": { "label": "授权检测", "description": "高风险代币授权。" }
+      },
+      "nft": {
+        "trending": { "label": "热门", "description": "按 24h 成交量的顶级系列。" },
+        "floor-radar": { "label": "地板雷达", "description": "追踪自选系列的地板价。" },
+        "calendar": { "label": "日历", "description": "即将到来的 mint 与发布。" }
+      },
+      "news": {
+        "index": { "label": "最新资讯", "description": "所有近期头条。" },
+        "categories": { "label": "分类", "description": "按主题筛选新闻。" },
+        "sentiment": { "label": "情绪", "description": "恐惧与贪婪历史。" }
+      },
+      "tools": {
+        "gas": { "label": "Gas", "description": "实时 ETH Gas + 成本估算。" },
+        "converter": { "label": "换算器", "description": "代币间的实时汇率。" },
+        "swap-simulator": { "label": "Swap 模拟器", "description": "1inch 报价预览。" },
+        "il-calculator": { "label": "IL 计算器", "description": "无常损失助手。" },
+        "dca": { "label": "DCA 回测", "description": "回放定投策略。" }
+      },
+      "settings": {
+        "general": { "label": "通用", "description": "主题、币种、语言。" },
+        "wallet": { "label": "钱包", "description": "连接 / 断开钱包。" },
+        "api": { "label": "API 健康", "description": "后端与上游状态。" },
+        "data": { "label": "数据", "description": "本地缓存与导出。" }
+      }
+    }
+  }
+}

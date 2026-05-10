@@ -38,15 +38,15 @@ export function MarketsOverviewPage() {
           <MetricCard label="24h Volume" value={formatCompact(global.data?.total_volume, "USD")} />
           <MetricCard
             label="Active Coins"
-            value={global.data?.active_cryptocurrencies?.toLocaleString() ?? "—"}
-            hint={`${global.data?.markets ?? "—"} markets tracked`}
+            value={global.data?.active_cryptocurrencies?.toLocaleString() ?? "-"}
+            hint={`${global.data?.markets ?? "-"} markets tracked`}
           />
           <MetricCard
             label="Fear & Greed"
             value={
               global.data?.fear_greed
                 ? `${global.data.fear_greed.value} · ${global.data.fear_greed.classification}`
-                : "—"
+                : "-"
             }
             hint="alternative.me"
           />
@@ -56,7 +56,7 @@ export function MarketsOverviewPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Top 10 — 7d sparkline</CardTitle>
+            <CardTitle>Top 10 - 7d sparkline</CardTitle>
           </CardHeader>
           <CardContent>
             <QueryState isLoading={top.isLoading} error={top.error}>

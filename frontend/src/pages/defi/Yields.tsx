@@ -67,7 +67,7 @@ export function DefiYieldsPage() {
       align: "right",
       render: (r) =>
         r.apy === null ? (
-          <span className="text-xs text-muted-foreground">—</span>
+          <span className="text-xs text-muted-foreground">-</span>
         ) : (
           <span className="num font-semibold text-emerald-300">{r.apy.toFixed(2)}%</span>
         ),
@@ -79,7 +79,7 @@ export function DefiYieldsPage() {
       label: "Base",
       align: "right",
       render: (r) => (
-        <span className="num text-xs">{r.apyBase === null ? "—" : `${r.apyBase.toFixed(2)}%`}</span>
+        <span className="num text-xs">{r.apyBase === null ? "-" : `${r.apyBase.toFixed(2)}%`}</span>
       ),
       sortable: true,
       sortValue: (r) => r.apyBase ?? null,
@@ -89,7 +89,7 @@ export function DefiYieldsPage() {
       label: "Reward",
       align: "right",
       render: (r) => (
-        <span className="num text-xs">{r.apyReward === null ? "—" : `${r.apyReward.toFixed(2)}%`}</span>
+        <span className="num text-xs">{r.apyReward === null ? "-" : `${r.apyReward.toFixed(2)}%`}</span>
       ),
       sortable: true,
       sortValue: (r) => r.apyReward ?? null,
@@ -97,7 +97,7 @@ export function DefiYieldsPage() {
     {
       key: "exposure",
       label: "Exposure",
-      render: (r) => <span className="text-xs uppercase text-muted-foreground">{r.exposure ?? "—"}</span>,
+      render: (r) => <span className="text-xs uppercase text-muted-foreground">{r.exposure ?? "-"}</span>,
     },
     {
       key: "stable",
@@ -107,7 +107,7 @@ export function DefiYieldsPage() {
         r.stable ? (
           <Badge variant="success">stable</Badge>
         ) : (
-          <span className="text-[10px] text-muted-foreground">—</span>
+          <span className="text-[10px] text-muted-foreground">-</span>
         ),
     },
   ];

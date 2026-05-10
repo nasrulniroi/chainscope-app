@@ -29,7 +29,7 @@ export function TokensPage() {
     {
       key: "rank",
       label: "#",
-      render: (r) => <span className="num text-muted-foreground">{r.market_cap_rank ?? "—"}</span>,
+      render: (r) => <span className="num text-muted-foreground">{r.market_cap_rank ?? "-"}</span>,
       sortable: true,
       sortValue: (r) => r.market_cap_rank ?? 9999,
     },

@@ -19,7 +19,7 @@ export function MarketsStablecoinsPage() {
     const peggedFiat = list.filter((s) => (s.pegType ?? "").toLowerCase().includes("usd"));
     return {
       total,
-      topName: top?.name ?? "—",
+      topName: top?.name ?? "-",
       topShare: top && total ? ((top.circulating ?? 0) / total) * 100 : null,
       usdShare: total ? (peggedFiat.reduce((s, x) => s + (x.circulating ?? 0), 0) / total) * 100 : null,
     };
@@ -33,7 +33,7 @@ export function MarketsStablecoinsPage() {
       label: "Peg",
       render: (r) => (
         <span className="flex items-center gap-1">
-          <Badge variant="outline">{r.pegType ?? "—"}</Badge>
+          <Badge variant="outline">{r.pegType ?? "-"}</Badge>
           <span className="text-[10px] text-muted-foreground">{r.pegMechanism ?? ""}</span>
         </span>
       ),
@@ -85,7 +85,7 @@ export function MarketsStablecoinsPage() {
           />
           <MetricCard
             label="USD-pegged share"
-            value={totals.usdShare !== null ? `${totals.usdShare.toFixed(1)}%` : "—"}
+            value={totals.usdShare !== null ? `${totals.usdShare.toFixed(1)}%` : "-"}
             hint="Across all listed assets"
           />
         </div>

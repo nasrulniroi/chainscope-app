@@ -1,0 +1,113 @@
+{
+  "common": {
+    "viewAll": "すべて表示",
+    "loading": "読み込み中...",
+    "error": "読み込みに失敗しました",
+    "open": "開く",
+    "language": "言語"
+  },
+  "topbar": {
+    "searchPlaceholder": "トークンまたはアドレスを検索 (0x...)",
+    "themeToggle": "テーマ切り替え",
+    "languageToggle": "言語を変更"
+  },
+  "home": {
+    "title": "DeFi Command Center",
+    "tagline": "無料のマルチチェーンWeb3ターミナル：マーケット、DeFi、オンチェーンツール、ウォレットをひとつに。",
+    "metric": {
+      "totalMarketCap": "時価総額合計",
+      "volume24h": "24時間取引量",
+      "btcDominance": "BTC支配率",
+      "ethDominanceHint": "ETH {{value}}%",
+      "fearGreed": "Fear & Greed",
+      "fearGreedSource": "出典: alternative.me"
+    },
+    "topByMcap": "時価総額トップ",
+    "liveGas": "ライブガス (Ethereum)",
+    "gas": { "slow": "遅い", "std": "標準", "fast": "速い", "baseFee": "ベース手数料", "block": "ブロック" },
+    "openGasTools": "ガスツールを開く",
+    "browseTitle": "ターミナルを見る",
+    "browseSub": "ハブを選んで深く入りましょう。各ハブは関連ツールとともに独自のページを開き、画面を散らかしません。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "sections": {
+      "wallet": { "label": "マイウォレット", "description": "一度接続すればすべてが見える：保有資産、NFT、DeFiポジション、履歴、PnL、承認、アラート。" },
+      "markets": { "label": "マーケット", "description": "暗号資産のマクロビュー：時価総額、ドミナンス、ヒートマップ、セクター、ステーブルコイン、トレンドコイン。" },
+      "tokens": { "label": "トークン", "description": "CoinGeckoが追跡する全トークンを閲覧・フィルタ・比較。各トークンに詳細ページ。" },
+      "defi": { "label": "DeFi", "description": "DefiLlamaからのライブDeFiデータ：TVL、利回り、レンディング市場、DEX取引高、カテゴリ別内訳。" },
+      "chains": { "label": "チェーン", "description": "チェーン単位の分析、横並び比較、L1とL2をまたぐブリッジルーター。" },
+      "onchain": { "label": "オンチェーンツール", "description": "上級者向けユーティリティ：任意のアドレスを検索、ホエール監視、コントラクト検査、承認監査。" },
+      "nft": { "label": "NFT", "description": "Reservoir提供のNFTマーケット概要：トレンドコレクション、フロアレーダー、ドロップカレンダー。" },
+      "news": { "label": "ニュースとセンチメント", "description": "CryptoCompare、Cointelegraph、Bitcoin Magazineからの最新ヘッドラインとマーケットセンチメント。" },
+      "tools": { "label": "ツール", "description": "実用的な計算機とライブデータ：ガストラッカー、スワップ見積もり、IL計算機、DCAバックテスト。" },
+      "settings": { "label": "設定", "description": "アプリ設定、ウォレット管理、APIヘルス、データのインポート/エクスポート。" }
+    },
+    "items": {
+      "wallet": {
+        "overview": { "label": "概要", "description": "純資産、配分、最近の活動。" },
+        "tokens": { "label": "トークン", "description": "USD換算のERC-20残高すべて。" },
+        "positions": { "label": "DeFiポジション", "description": "レンディング、LP、ステーキングのエクスポージャー。" },
+        "nfts": { "label": "NFT", "description": "保有コレクションとフロア推定。" },
+        "history": { "label": "取引履歴", "description": "デコードされた最近の取引。" },
+        "pnl": { "label": "PnL", "description": "マーケットに対する未実現損益。" },
+        "approvals": { "label": "承認", "description": "未処理のトークン承認。" },
+        "alerts": { "label": "アラート", "description": "ウォッチリストの価格アラート。" }
+      },
+      "markets": {
+        "overview": { "label": "概要", "description": "時価総額、BTC/ETHドミナンス、Fear & Greed。" },
+        "heatmap": { "label": "ヒートマップ", "description": "上位100銘柄を24時間変動で色分け。" },
+        "sectors": { "label": "セクター", "description": "時価総額で並べたカテゴリ。" },
+        "stablecoins": { "label": "ステーブルコイン", "description": "供給量、ペッグ、ドミナンス。" },
+        "trending": { "label": "トレンド", "description": "検索コイン+変動の大きい銘柄。" }
+      },
+      "tokens": {
+        "index": { "label": "全トークン", "description": "並び替え・絞り込み可能なトークン一覧。" },
+        "new-listings": { "label": "新規上場", "description": "ミッドキャップの新顔 (rank > 100)。" },
+        "categories": { "label": "カテゴリ", "description": "セクター別トークン。" },
+        "compare": { "label": "比較", "description": "横並び比較。" }
+      },
+      "defi": {
+        "protocols": { "label": "プロトコル", "description": "TVL別の追跡DeFiプロトコル。" },
+        "yields": { "label": "利回り", "description": "チェーンとプール横断のライブAPY。" },
+        "lending": { "label": "レンディング", "description": "レンディング専用プロトコルとレート。" },
+        "dex": { "label": "DEX出来高", "description": "DEX別の取引高。" },
+        "categories": { "label": "カテゴリ", "description": "活動別のセクターランキング。" }
+      },
+      "chains": {
+        "index": { "label": "全チェーン", "description": "TVL別のL1/L2。" },
+        "compare": { "label": "比較", "description": "TVLと履歴を比較。" },
+        "bridges": { "label": "ブリッジ", "description": "LI.FI経由のルート見積もり。" }
+      },
+      "onchain": {
+        "wallet-lookup": { "label": "ウォレット検索", "description": "任意の0xアドレスを検査。" },
+        "whale-watch": { "label": "ホエール監視", "description": "最大規模の最近の送金。" },
+        "contract": { "label": "コントラクト", "description": "ABIと検証済みソースコード。" },
+        "approval-checker": { "label": "承認チェッカー", "description": "リスクのあるトークン承認。" }
+      },
+      "nft": {
+        "trending": { "label": "トレンド", "description": "24時間の出来高上位コレクション。" },
+        "floor-radar": { "label": "フロアレーダー", "description": "ウォッチリストのフロアを追跡。" },
+        "calendar": { "label": "カレンダー", "description": "今後のミントとリリース。" }
+      },
+      "news": {
+        "index": { "label": "最新ニュース", "description": "最近のヘッドラインすべて。" },
+        "categories": { "label": "カテゴリ", "description": "トピック別にニュースを絞り込み。" },
+        "sentiment": { "label": "センチメント", "description": "Fear & Greedの履歴。" }
+      },
+      "tools": {
+        "gas": { "label": "ガス", "description": "ライブETHガス+コスト見積もり。" },
+        "converter": { "label": "コンバーター", "description": "トークン間ライブ為替。" },
+        "swap-simulator": { "label": "スワップシミュレーター", "description": "1inch見積もりプレビュー。" },
+        "il-calculator": { "label": "IL計算機", "description": "インパーマネントロス計算。" },
+        "dca": { "label": "DCAバックテスト", "description": "定期購入戦略を再生。" }
+      },
+      "settings": {
+        "general": { "label": "一般", "description": "テーマ、通貨、ロケール。" },
+        "wallet": { "label": "ウォレット", "description": "ウォレットの接続/切断。" },
+        "api": { "label": "APIヘルス", "description": "バックエンドとアップストリームの状態。" },
+        "data": { "label": "データ", "description": "ローカルキャッシュとエクスポート。" }
+      }
+    }
+  }
+}

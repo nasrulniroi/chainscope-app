@@ -25,7 +25,7 @@ export function Sparkline({ data, width = 110, height = 32, positive, className 
   }, [data, height, width]);
 
   if (!data || data.length < 2) {
-    return <div className="text-[10px] text-muted-foreground">—</div>;
+    return <div className="text-[10px] text-muted-foreground">-</div>;
   }
   const stroke = positive ? "#22c55e" : positive === false ? "#f43f5e" : "#94a3b8";
   return (

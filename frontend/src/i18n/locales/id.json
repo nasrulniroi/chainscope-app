@@ -1,19 +1,19 @@
 {
   "common": {
     "viewAll": "Lihat semua",
-    "loading": "Memuat…",
+    "loading": "Memuat...",
     "error": "Gagal memuat",
     "open": "Buka",
     "language": "Bahasa"
   },
   "topbar": {
-    "searchPlaceholder": "Cari token atau alamat (0x…)",
+    "searchPlaceholder": "Cari token atau alamat (0x...)",
     "themeToggle": "Ubah tema",
     "languageToggle": "Ganti bahasa"
   },
   "home": {
     "title": "DeFi Command Center",
-    "tagline": "Terminal Web3 multi-chain gratis — pasar, DeFi, alat on-chain, dan dompetmu, semua di satu tempat.",
+    "tagline": "Terminal Web3 multi-chain gratis , pasar, DeFi, alat on-chain, dan dompetmu, semua di satu tempat.",
     "metric": {
       "totalMarketCap": "Total Kapitalisasi Pasar",
       "volume24h": "Volume 24 jam",
@@ -25,9 +25,9 @@
     "topByMcap": "Teratas berdasarkan Market Cap",
     "liveGas": "Gas Live (Ethereum)",
     "gas": { "slow": "Lambat", "std": "Std", "fast": "Cepat", "baseFee": "Base fee", "block": "Blok" },
-    "openGasTools": "Buka alat gas →",
+    "openGasTools": "Buka alat gas",
     "browseTitle": "Jelajahi terminal",
-    "browseSub": "Pilih hub untuk masuk. Setiap hub punya halamannya sendiri dengan alat terkait — gak ada yang lain bikin layar berantakan."
+    "browseSub": "Pilih hub untuk masuk. Setiap hub punya halamannya sendiri dengan alat terkait , gak ada yang lain bikin layar berantakan."
   },
   "nav": {
     "home": "Beranda",

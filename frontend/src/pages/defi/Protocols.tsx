@@ -65,14 +65,14 @@ export function DefiProtocolsPage() {
     {
       key: "category",
       label: "Category",
-      render: (r) => (r.category ? <Badge variant="outline">{r.category}</Badge> : <span className="text-xs text-muted-foreground">—</span>),
+      render: (r) => (r.category ? <Badge variant="outline">{r.category}</Badge> : <span className="text-xs text-muted-foreground">-</span>),
       sortable: true,
       sortValue: (r) => r.category ?? "",
     },
     {
       key: "chain",
       label: "Chain",
-      render: (r) => <span className="text-xs">{r.chain ?? "—"}</span>,
+      render: (r) => <span className="text-xs">{r.chain ?? "-"}</span>,
       sortable: true,
       sortValue: (r) => r.chain ?? "",
     },

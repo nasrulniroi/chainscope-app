@@ -51,7 +51,7 @@ export function Sidebar({ collapsed, onToggle, walletConnected }: Props) {
   return (
     <aside
       className={cn(
-        "flex h-screen flex-shrink-0 flex-col border-r border-border bg-card text-card-foreground transition-[width] duration-150",
+        "sticky top-0 z-20 flex h-screen max-h-screen flex-shrink-0 flex-col self-start border-r border-border bg-card text-card-foreground transition-[width] duration-150",
         collapsed ? "w-14" : "w-60",
       )}
     >

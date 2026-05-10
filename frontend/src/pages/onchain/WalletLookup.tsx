@@ -23,7 +23,7 @@ export function OnchainWalletLookupPage() {
     <div className="space-y-4">
       <PageHeader
         title="Wallet Lookup"
-        description="Enter any Ethereum address to view balances and recent transactions. Read-only — no signing."
+        description="Enter any Ethereum address to view balances and recent transactions. Read-only - no signing."
       />
       <Card>
         <CardContent className="flex flex-wrap items-end gap-3 pt-4">

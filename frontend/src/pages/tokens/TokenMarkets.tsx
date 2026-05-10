@@ -24,7 +24,7 @@ export function TokenMarketsPage() {
   const rows: MarketRow[] = detail.data?.tickers ?? [];
 
   const cols: Column<MarketRow>[] = [
-    { key: "exchange", label: "Exchange", render: (r) => <span className="font-medium">{r.exchange ?? "—"}</span>, sortable: true, sortValue: (r) => r.exchange ?? "" },
+    { key: "exchange", label: "Exchange", render: (r) => <span className="font-medium">{r.exchange ?? "-"}</span>, sortable: true, sortValue: (r) => r.exchange ?? "" },
     { key: "pair", label: "Pair", render: (r) => <span className="text-xs text-muted-foreground">{r.pair}</span> },
     { key: "price", label: "Price", align: "right", render: (r) => <span className="num">{formatCurrency(r.price)}</span>, sortable: true, sortValue: (r) => r.price ?? null },
     { key: "volume", label: "Volume", align: "right", render: (r) => <span className="num">{formatCompact(r.volume, "USD")}</span>, sortable: true, sortValue: (r) => r.volume ?? null },
@@ -37,7 +37,7 @@ export function TokenMarketsPage() {
             {r.trust_score}
           </Badge>
         ) : (
-          <span className="text-xs text-muted-foreground">—</span>
+          <span className="text-xs text-muted-foreground">-</span>
         ),
     },
     {

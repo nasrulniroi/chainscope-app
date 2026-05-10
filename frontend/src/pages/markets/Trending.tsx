@@ -48,7 +48,7 @@ export function MarketsTrendingPage() {
                         <span className="truncate text-sm font-medium">{c.name}</span>
                         <span className="text-xs uppercase text-muted-foreground">{c.symbol}</span>
                       </span>
-                      <span className="text-xs text-muted-foreground">#{c.market_cap_rank ?? "—"}</span>
+                      <span className="text-xs text-muted-foreground">#{c.market_cap_rank ?? "-"}</span>
                     </Link>
                   </li>
                 ))}

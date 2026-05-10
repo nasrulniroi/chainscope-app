@@ -91,11 +91,11 @@ export function ChainsComparePage() {
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div>
                       <div className="text-muted-foreground">Native</div>
-                      <div className="num">{r.tokenSymbol ?? "—"}</div>
+                      <div className="num">{r.tokenSymbol ?? "-"}</div>
                     </div>
                     <div>
                       <div className="text-muted-foreground">Chain ID</div>
-                      <div className="num">{r.chainId ?? "—"}</div>
+                      <div className="num">{r.chainId ?? "-"}</div>
                     </div>
                   </div>
                 </CardContent>

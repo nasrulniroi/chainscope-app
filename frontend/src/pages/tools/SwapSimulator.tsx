@@ -140,11 +140,11 @@ export function ToolsSwapSimulatorPage() {
                   {amount} {fromToken?.symbol} → {toToken?.symbol}
                 </div>
                 <div className="num text-2xl font-semibold">
-                  {out ? out.toFixed(6) : "—"} {toToken?.symbol}
+                  {out ? out.toFixed(6) : "-"} {toToken?.symbol}
                 </div>
                 <div className="mt-2 flex flex-wrap gap-2 text-xs text-muted-foreground">
-                  <Badge variant="outline">Rate {rate ? rate.toFixed(6) : "—"}</Badge>
-                  <Badge variant="outline">Gas est. {quote.estimated_gas ?? "—"}</Badge>
+                  <Badge variant="outline">Rate {rate ? rate.toFixed(6) : "-"}</Badge>
+                  <Badge variant="outline">Gas est. {quote.estimated_gas ?? "-"}</Badge>
                   {Array.isArray(quote.protocols) && quote.protocols.length > 0 ? (
                     <Badge variant="outline">{quote.protocols.length} routes</Badge>
                   ) : null}

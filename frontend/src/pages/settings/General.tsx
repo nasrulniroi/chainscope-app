@@ -1,9 +1,12 @@
+import { useTranslation } from "react-i18next";
+
 import { PageHeader } from "@/components/common/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useSettings } from "@/providers/SettingsProvider";
 import type { FiatCurrency } from "@/providers/SettingsProvider";
+import { SUPPORTED_LANGUAGES } from "@/i18n";
 
 const REFRESH_OPTIONS: { value: number; label: string }[] = [
   { value: 15, label: "15 seconds" },
@@ -14,15 +17,17 @@ const REFRESH_OPTIONS: { value: number; label: string }[] = [
 
 export function SettingsGeneralPage() {
   const settings = useSettings();
+  const { i18n } = useTranslation();
+  const currentLang = (i18n.resolvedLanguage ?? i18n.language ?? "en").split("-")[0];
   return (
     <div className="space-y-4">
-      <PageHeader title="General" description="Theme, currency and refresh interval." />
+      <PageHeader title="General" description="Theme, language, currency and refresh interval." />
       <Card>
         <CardHeader>
           <CardTitle>Display</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             <div>
               <Label>Theme</Label>
               <Select
@@ -33,6 +38,24 @@ export function SettingsGeneralPage() {
                 <SelectContent>
                   <SelectItem value="dark">Dark</SelectItem>
                   <SelectItem value="light">Light</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label>Language</Label>
+              <Select
+                value={currentLang}
+                onValueChange={(v) => {
+                  void i18n.changeLanguage(v);
+                }}
+              >
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  {SUPPORTED_LANGUAGES.map((lang) => (
+                    <SelectItem key={lang.code} value={lang.code}>
+                      {lang.nativeLabel}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>

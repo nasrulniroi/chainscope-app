@@ -92,13 +92,13 @@ export function DefiProtocolDetailPage() {
                     </span>
                   }
                 />
-                <Row label="Category" value={<Badge variant="outline">{detail.data.category ?? "—"}</Badge>} />
+                <Row label="Category" value={<Badge variant="outline">{detail.data.category ?? "-"}</Badge>} />
                 <Row label="Mcap" value={formatCompact(detail.data.mcap, "USD")} />
                 <Row
                   label="Audits"
                   value={
                     <span className="text-xs text-muted-foreground">
-                      {detail.data.audits ? `Tier ${detail.data.audits}` : "—"}
+                      {detail.data.audits ? `Tier ${detail.data.audits}` : "-"}
                     </span>
                   }
                 />
@@ -115,7 +115,7 @@ export function DefiProtocolDetailPage() {
                         @{detail.data.twitter}
                       </a>
                     ) : (
-                      <span className="text-xs text-muted-foreground">—</span>
+                      <span className="text-xs text-muted-foreground">-</span>
                     )
                   }
                 />
@@ -127,7 +127,7 @@ export function DefiProtocolDetailPage() {
                         {new URL(detail.data.url).hostname}
                       </a>
                     ) : (
-                      <span className="text-xs text-muted-foreground">—</span>
+                      <span className="text-xs text-muted-foreground">-</span>
                     )
                   }
                 />
