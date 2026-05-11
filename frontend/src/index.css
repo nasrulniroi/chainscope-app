@@ -80,16 +80,19 @@
     /* min-h-screen + scrollbar-gutter cooperate to keep layout stable. */
     min-height: 100vh;
   }
-  /* Radix popovers/dropdowns/modals lock body scroll by setting
-     overflow:hidden + padding-right on <body> to compensate for the
-     disappearing scrollbar. We already keep the scrollbar slot via
-     scrollbar-gutter on <html>, so that compensation is unnecessary
-     and causes the content (topbar, page) to jump horizontally when a
-     dropdown like the language picker opens. Neutralize both. */
-  body[data-scroll-locked] {
-    overflow: visible !important;
-    padding-right: 0 !important;
+  /* Radix UI dropdowns / RainbowKit modals lock body scroll via the shared
+     `react-remove-scroll` library, which injects a *runtime* <style> with
+     `body[data-scroll-locked] { margin-right: <scrollbar-width>px !important; }`
+     to compensate for the scrollbar it hides on <body>. But the scrollbar
+     actually lives on <html> (we set `overflow-y: scroll` + `scrollbar-gutter:
+     stable` above), so that compensation double-counts and shifts the whole
+     page horizontally every time a dropdown / modal opens.
+     We need higher specificity than the library's `body[data-scroll-locked]`
+     (specificity 0,2,1) to override its `!important` declarations, hence
+     prefixing with `html`. */
+  html body[data-scroll-locked] {
     margin-right: 0 !important;
+    padding-right: 0 !important;
   }
   h1,
   h2,
