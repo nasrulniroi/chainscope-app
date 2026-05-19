@@ -1,52 +1,34 @@
-# DeFi Command Center
+# ChainScope
 
-A Bloomberg-style Web3/DeFi terminal — a multi-page SPA built with Vite + React + TypeScript on the
-frontend and a single Vercel Python serverless function on the backend, deployable on Vercel using
-only free APIs (no API keys required).
+Multi-chain DeFi intelligence platform — real-time market data, on-chain analytics, wallet tracking, and DeFi protocol insights across 50+ chains.
 
-## Stack
+## Features
 
-- **Frontend** — Vite, React 18, TypeScript, Tailwind CSS, shadcn/ui, Recharts, lucide-react,
-  React Router v6, @tanstack/react-query, wagmi + viem + RainbowKit (multichain read-only wallet).
-- **Backend** — Single Vercel Python serverless function in `api/index.py` using only the standard
-  library (`http.server.BaseHTTPRequestHandler`, `urllib.request`, `json`, `re`). CORS allow-all,
-  in-memory TTL cache.
+- **Markets**: Overview, trending tokens, sectors, stablecoins, heatmap
+- **Tokens**: Detailed token pages, comparison, categories, new listings, markets, news
+- **DeFi**: Protocol rankings, yields, DEX analytics, lending, categories
+- **Chains**: Multi-chain comparison, bridge tracking, chain details
+- **On-Chain Tools**: Whale watch, approval checker, wallet lookup, contract analysis
+- **NFT**: Trending collections, floor radar, calendar
+- **News**: Aggregated crypto news with sentiment analysis
+- **Tools**: DCA calculator, gas tracker, converter, impermanent loss calculator, swap simulator
+- **Wallet**: Portfolio tracking, PnL analysis, positions, token holdings, NFT gallery
 
-## Free data sources
+## Tech Stack
 
-| Domain | Source |
-| --- | --- |
-| Market data, charts, trending | CoinGecko free |
-| TVL, protocols, yields, chains, stablecoins, bridges | DefiLlama |
-| Gas oracle, ETH balance, tx | Etherscan V2 free tier |
-| Fear & Greed | api.alternative.me |
-| News | CryptoCompare, Cointelegraph RSS, Bitcoin Magazine RSS |
-| Wallet token holdings | Ethplorer (ETH), Etherscan tokenlist (others) |
-| Bridge route quotes | LI.FI public endpoint |
-| Swap quotes | 1inch public quote |
-| NFT trending, floor | Reservoir public |
+- **Frontend**: React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui
+- **Backend**: Python serverless (Vercel Functions)
+- **Data**: CoinGecko, DefiLlama, and other public crypto APIs
+- **Wallet**: Wagmi + WalletConnect (MetaMask, Rabby, etc.)
 
-## Local development
+## Development
 
 ```bash
-# Install root tooling and the Vite frontend
+cd frontend
 npm install
-cd frontend && npm install
-
-# Run the frontend (Vite dev server on http://localhost:5173)
 npm run dev
-
-# Build the SPA
-cd frontend && npm run build
-```
-
-The Python API runs as a Vercel serverless function. For local testing you can run the file
-directly:
-
-```bash
-python3 api/index.py
 ```
 
 ## Deployment
 
-Pushed to Vercel — see `vercel.json` at the repo root for the rewrites that make the SPA work.
+Configured for Vercel with Python serverless backend at `api/index.py`.

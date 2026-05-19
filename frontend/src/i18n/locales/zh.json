@@ -12,7 +12,7 @@
     "languageToggle": "更换语言"
   },
   "home": {
-    "title": "DeFi Command Center",
+    "title": "ChainScope",
     "tagline": "免费的多链 Web3 终端：行情、DeFi、链上工具和你的钱包，一站式集成。",
     "metric": {
       "totalMarketCap": "总市值",

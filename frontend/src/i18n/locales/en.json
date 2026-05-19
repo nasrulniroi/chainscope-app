@@ -12,7 +12,7 @@
     "languageToggle": "Change language"
   },
   "home": {
-    "title": "DeFi Command Center",
+    "title": "ChainScope",
     "tagline": "A free, multi-chain Web3 terminal: markets, DeFi, on-chain tools and your wallet, in one place.",
     "metric": {
       "totalMarketCap": "Total Market Cap",

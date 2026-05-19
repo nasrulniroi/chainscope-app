@@ -12,7 +12,7 @@
     "languageToggle": "Cambiar idioma"
   },
   "home": {
-    "title": "DeFi Command Center",
+    "title": "ChainScope",
     "tagline": "Una terminal Web3 multicadena gratuita: mercados, DeFi, herramientas on-chain y tu billetera, todo en un solo lugar.",
     "metric": {
       "totalMarketCap": "Capitalización total",

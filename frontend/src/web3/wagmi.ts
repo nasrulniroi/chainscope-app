@@ -9,7 +9,7 @@ const PROJECT_ID =
 export const supportedChains = [mainnet, arbitrum, optimism, base, polygon, bsc] as const;
 
 export const wagmiConfig = getDefaultConfig({
-  appName: "DeFi Command Center",
+  appName: "ChainScope",
   projectId: PROJECT_ID,
   chains: supportedChains,
   ssr: false,

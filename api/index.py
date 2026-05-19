@@ -1,4 +1,4 @@
-"""DeFi Command Center serverless API.
+"""ChainScope serverless API.
 
 A single Vercel Python function that proxies a curated set of free public
 crypto / DeFi APIs and exposes a stable JSON contract to the frontend.
@@ -33,7 +33,7 @@ from xml.etree import ElementTree
 # ---------------------------------------------------------------------------
 
 DEFAULT_TIMEOUT = 12  # seconds for any single upstream call
-USER_AGENT = "DeFiCommandCenter/0.1 (+https://github.com/cacingsiwuk-prog/defi-command-center)"
+USER_AGENT = "ChainScope/0.1"
 
 ETHERSCAN_API_KEY = os.environ.get("ETHERSCAN_API_KEY", "").strip()
 
@@ -538,7 +538,7 @@ def _bridges_routes(query: dict[str, list[str]]) -> dict[str, Any]:
             "fromAmount": amount,
             "fromAddress": from_address,
             "toAddress": to_address,
-            "integrator": "defi-command-center",
+            "integrator": "chainscope",
         }
         url = "https://li.quest/v1/quote?" + urllib.parse.urlencode(params)
         try:
@@ -1125,7 +1125,7 @@ def _api_health() -> dict[str, Any]:
 def _dispatch(path: str, query: dict[str, list[str]]) -> tuple[int, dict[str, Any]]:
     """Return (status_code, body_dict) for the given path."""
     if path in {"/healthz", "/api/index", "/api/", "/api"}:
-        return 200, {"ok": True, "service": "defi-command-center", "ts": int(time.time())}
+        return 200, {"ok": True, "service": "chainscope", "ts": int(time.time())}
 
     if path == "/api/markets/overview":
         return 200, _markets_overview()
