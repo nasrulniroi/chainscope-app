@@ -61,8 +61,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Exo 2", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["Orbitron", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "monospace"],
       },
       keyframes: {
