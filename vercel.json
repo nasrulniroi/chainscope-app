@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "cd frontend && corepack enable && yarn install",
-  "buildCommand": "cd frontend && NODE_OPTIONS=--max-old-space-size=4096 yarn vite build",
+  "installCommand": "cd frontend && npm install --legacy-peer-deps --registry=https://registry.npmjs.org",
+  "buildCommand": "cd frontend && NODE_OPTIONS=--max-old-space-size=4096 npx vite build",
   "outputDirectory": "frontend/dist",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/index" },
