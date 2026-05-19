@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
-import { ChevronDown, ChevronLeft, ChevronRight, Home, LineChart, X } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Home, Layers, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { NAV_SECTIONS, findRouteByPath } from "@/routes/config";
@@ -152,9 +152,9 @@ function SidebarInner({
     <>
       <div className="flex h-12 items-center justify-between border-b border-border px-3">
         <Link to="/" className="flex items-center gap-2">
-          <LineChart className="h-5 w-5 text-primary" />
+          <Layers className="h-5 w-5 text-primary" />
           {!collapsed && (
-            <span className="text-base font-semibold leading-none tracking-tight">DCC</span>
+            <span className="text-base font-semibold leading-none tracking-tight">CS</span>
           )}
         </Link>
         {showMobileClose ? (
@@ -180,7 +180,7 @@ function SidebarInner({
         )}
       </div>
       <nav className="scrollbar-thin flex-1 overflow-y-auto px-2 py-3">
-        {!collapsed && <div className="label-eyebrow mb-2 px-2">Terminal</div>}
+        {!collapsed && <div className="label-eyebrow mb-2 px-2">Dashboard</div>}
         <NavLink
           to="/"
           end
@@ -198,7 +198,7 @@ function SidebarInner({
           <Home className="h-4 w-4 flex-shrink-0" />
           {!collapsed && <span>{t("nav.home")}</span>}
         </NavLink>
-        {!collapsed && <div className="label-eyebrow mb-1 mt-3 px-2">Sections</div>}
+        {!collapsed && <div className="label-eyebrow mb-1 mt-3 px-2">Explore</div>}
         {visibleSections.map((section) => {
           const isOpen = openId === section.id;
           const isActive = activeSectionId === section.id;

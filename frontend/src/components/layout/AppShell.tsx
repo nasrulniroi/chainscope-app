@@ -34,8 +34,8 @@ export function AppShell() {
   return (
     <div className="relative flex min-h-screen items-start bg-background text-foreground">
       {/* Atmospheric layers: never block input, sit behind everything else. */}
-      <div className="ambient-mesh" aria-hidden />
-      <div className="ambient-grain" aria-hidden />
+      <div className="ambient-disabled" aria-hidden />
+      <div className="ambient-disabled2" aria-hidden />
       <Sidebar
         collapsed={collapsed}
         onToggleCollapsed={() => setCollapsed((prev) => !prev)}

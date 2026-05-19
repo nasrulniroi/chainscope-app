@@ -38,7 +38,7 @@ void i18n
     detection: {
       order: ["localStorage", "navigator"],
       caches: ["localStorage"],
-      lookupLocalStorage: "dcc_i18n_lng",
+      lookupLocalStorage: "cs_i18n_lng",
     },
   });
 

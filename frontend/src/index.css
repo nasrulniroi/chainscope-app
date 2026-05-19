@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  /* Theme: "ChainScope Intelligence Platform".
+  /* Theme: "ChainScope DeFi Intelligence".
      Light = warm cream paper + deep ink + violet/indigo accent.
-     Dark  = deep ink charcoal + cream foreground + bright violet accent (terminal).
+     Dark  = deep ink charcoal + cream foreground + bright violet accent (platform).
      HSL components feed hsl(var(--token)). */
   :root {
     --background: 38 38% 96%;
@@ -127,7 +127,7 @@
     border-radius: 3px;
   }
   /* Atmospheric layered gradient mesh. Sits behind content, never blocks input. */
-  .ambient-mesh {
+  .ambient-disabled {
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -145,7 +145,7 @@
       );
   }
   /* Subtle grain texture (SVG noise) so backgrounds feel like paper/film, not flat. */
-  .ambient-grain {
+  .ambient-disabled2 {
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -154,7 +154,7 @@
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
-  .dark .ambient-grain {
+  .dark .ambient-disabled2 {
     opacity: 0.06;
   }
   /* Page-load reveal: staggered fade + small slide. */

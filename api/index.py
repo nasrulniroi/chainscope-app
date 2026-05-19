@@ -1225,7 +1225,7 @@ def _dispatch(path: str, query: dict[str, list[str]]) -> tuple[int, dict[str, An
 
 
 class handler(BaseHTTPRequestHandler):  # noqa: N801 - Vercel expects lowercase
-    server_version = "DCC/0.1"
+    server_version = "CS/1.0"
 
     def log_message(self, format: str, *args: Any) -> None:  # noqa: A002, ARG002
         return  # silence default stderr logging in serverless
@@ -1271,5 +1271,5 @@ if __name__ == "__main__":
     from http.server import HTTPServer
 
     port = int(os.environ.get("PORT", "3000"))
-    print(f"DCC API listening on :{port}")
+    print(f"ChainScope API listening on :{port}")
     HTTPServer(("0.0.0.0", port), handler).serve_forever()

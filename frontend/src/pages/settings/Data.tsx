@@ -21,12 +21,12 @@ export function SettingsDataPage() {
   }
 
   function exportWatchlist() {
-    const data = safeLocalStorageGet<unknown>("dcc_alerts_v1", []);
+    const data = safeLocalStorageGet<unknown>("cs_alerts_v1", []);
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "dcc-watchlist.json";
+    link.download = "cs-watchlist.json";
     link.click();
     URL.revokeObjectURL(url);
   }

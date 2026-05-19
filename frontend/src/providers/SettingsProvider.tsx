@@ -19,7 +19,7 @@ interface SettingsContextValue extends Settings {
 }
 
 const SettingsContext = createContext<SettingsContextValue | null>(null);
-const STORAGE_KEY = "dcc_settings_v1";
+const STORAGE_KEY = "cs_settings_v1";
 
 const defaultSettings: Settings = {
   theme: "dark",

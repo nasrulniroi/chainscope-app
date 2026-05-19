@@ -22,7 +22,7 @@ interface Alert {
   createdAt: number;
 }
 
-const STORAGE_KEY = "dcc_alerts_v1";
+const STORAGE_KEY = "cs_alerts_v1";
 
 export function WalletAlertsPage() {
   const top = useTopCoins({ perPage: 250 });
