@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "vite",
-  "buildCommand": "cd frontend && npm install && NODE_OPTIONS=--max-old-space-size=4096 npm run build",
+  "installCommand": "cd frontend && npm install",
+  "buildCommand": "cd frontend && NODE_OPTIONS=--max-old-space-size=4096 npx vite build",
   "outputDirectory": "frontend/dist",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/index" },
