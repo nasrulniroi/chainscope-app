@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "cd frontend && npm ci --legacy-peer-deps",
+  "installCommand": "cd frontend && NODE_OPTIONS=--max-old-space-size=4096 npm install --legacy-peer-deps",
   "buildCommand": "cd frontend && NODE_OPTIONS=--max-old-space-size=4096 npx vite build",
   "outputDirectory": "frontend/dist",
   "rewrites": [
