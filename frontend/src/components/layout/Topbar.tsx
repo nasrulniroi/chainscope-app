@@ -56,7 +56,7 @@ export function Topbar({ onOpenMobileMenu }: Props) {
   const mobileCrumb = crumbs[crumbs.length - 1];
 
   return (
-    <header className="sticky top-0 z-30 flex h-12 flex-shrink-0 items-center gap-1.5 border-b border-border bg-background/95 px-2 backdrop-blur supports-[backdrop-filter]:bg-background/80 sm:gap-2 sm:px-4">
+    <header className="sticky top-0 z-30 flex h-12 flex-shrink-0 items-center gap-1.5 border-b border-white/[0.06] bg-background/70 px-2 backdrop-blur-xl sm:gap-2 sm:px-4">
       <Button
         variant="ghost"
         size="icon"
@@ -90,7 +90,7 @@ export function Topbar({ onOpenMobileMenu }: Props) {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={t("topbar.searchPlaceholder")}
-            className="h-8 w-72 pl-8"
+            className="h-8 w-72 border-white/10 bg-card/40 pl-8 backdrop-blur-sm focus-visible:ring-primary/40"
             aria-label={t("topbar.searchPlaceholder")}
           />
         </div>

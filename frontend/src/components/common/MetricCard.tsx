@@ -19,7 +19,7 @@ export function MetricCard({ label, value, change, changeLabel, hint, icon }: Pr
           <span className="uppercase tracking-wide">{label}</span>
           {icon ?? null}
         </div>
-        <div className="num text-xl font-semibold leading-tight md:text-2xl">{value}</div>
+        <div className="num text-xl font-semibold leading-tight md:text-2xl gradient-text">{value}</div>
         {change !== undefined && change !== null ? (
           <div className={`num text-xs ${changeColor(change)}`}>
             {change > 0 ? "+" : ""}

@@ -11,10 +11,8 @@ import { safeLocalStorageGet, safeLocalStorageSet } from "@/lib/storage";
 import { leafSlug } from "@/i18n";
 
 interface Props {
-  /** Desktop-only: whether the sidebar is in icon-only (collapsed) mode. */
   collapsed: boolean;
   onToggleCollapsed: () => void;
-  /** Mobile-only: whether the drawer is open. */
   mobileOpen: boolean;
   onMobileClose: () => void;
   walletConnected: boolean;
@@ -36,7 +34,6 @@ export function Sidebar({
     return section?.id ?? null;
   }, [location.pathname]);
 
-  // Accordion: at most one section open at a time. Auto-expands the active section.
   const [openId, setOpenId] = useState<string | null>(() =>
     safeLocalStorageGet<string | null>(OPEN_ID_KEY, null),
   );
@@ -52,7 +49,6 @@ export function Sidebar({
     safeLocalStorageSet(OPEN_ID_KEY, openId);
   }, [openId]);
 
-  // Close the mobile drawer whenever the user navigates to a different route.
   useEffect(() => {
     if (mobileOpen) onMobileClose();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,24 +60,21 @@ export function Sidebar({
     (section) => !section.walletGated || walletConnected,
   );
 
-  // Mobile drawer is always expanded (full labels visible); desktop respects `collapsed`.
   return (
     <>
-      {/* Mobile backdrop. Only visible when drawer is open. */}
+      {/* Mobile backdrop */}
       <div
         aria-hidden={!mobileOpen}
         onClick={onMobileClose}
         className={cn(
-          "fixed inset-0 z-30 bg-black/50 backdrop-blur-sm transition-opacity duration-200 md:hidden",
+          "fixed inset-0 z-30 bg-black/60 backdrop-blur-sm transition-opacity duration-200 md:hidden",
           mobileOpen ? "opacity-100" : "pointer-events-none opacity-0",
         )}
       />
+      {/* Mobile drawer */}
       <aside
         className={cn(
-          // Shared
-          "flex flex-col border-r border-border bg-card text-card-foreground",
-          // Mobile (drawer)
-          "fixed inset-y-0 left-0 z-40 w-64 max-w-[80vw] transform transition-transform duration-200 md:hidden",
+          "fixed inset-y-0 left-0 z-40 flex w-64 max-w-[80vw] flex-col border-r border-white/[0.06] bg-card/80 text-card-foreground backdrop-blur-2xl transition-transform duration-200 md:hidden",
           mobileOpen ? "translate-x-0" : "-translate-x-full",
         )}
         aria-hidden={!mobileOpen}
@@ -99,10 +92,10 @@ export function Sidebar({
           t={t}
         />
       </aside>
+      {/* Desktop sidebar */}
       <aside
         className={cn(
-          // Desktop sidebar: sticky, takes layout space.
-          "sticky top-0 z-20 hidden h-screen max-h-screen flex-shrink-0 flex-col self-start border-r border-border bg-card text-card-foreground transition-[width] duration-150 md:flex",
+          "sticky top-0 z-20 hidden h-screen max-h-screen flex-shrink-0 flex-col self-start border-r border-white/[0.06] bg-card/60 text-card-foreground backdrop-blur-2xl transition-[width] duration-150 md:flex",
           collapsed ? "w-14" : "w-60",
         )}
       >
@@ -143,18 +136,21 @@ function SidebarInner({
   onToggleCollapsed,
   visibleSections,
   openId,
-  setOpenId,
   toggle,
   activeSectionId,
   t,
 }: InnerProps) {
   return (
     <>
-      <div className="flex h-12 items-center justify-between border-b border-border px-3">
+      <div className="flex h-12 items-center justify-between border-b border-white/[0.06] px-3">
         <Link to="/" className="flex items-center gap-2">
-          <Layers className="h-5 w-5 text-primary" />
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/15">
+            <Layers className="h-4 w-4 text-primary" />
+          </div>
           {!collapsed && (
-            <span className="text-base font-semibold leading-none tracking-tight">CS</span>
+            <span className="font-display text-base font-bold leading-none tracking-tight text-foreground">
+              ChainScope
+            </span>
           )}
         </Link>
         {showMobileClose ? (
@@ -186,10 +182,10 @@ function SidebarInner({
           end
           className={({ isActive }) =>
             cn(
-              "mb-2 flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition",
+              "mb-2 flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm transition-all duration-200",
               isActive
-                ? "bg-primary/15 text-primary"
-                : "text-muted-foreground hover:bg-accent hover:text-foreground",
+                ? "bg-primary/15 text-primary shadow-sm shadow-primary/10"
+                : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
               collapsed && "justify-center",
             )
           }
@@ -210,17 +206,17 @@ function SidebarInner({
             <div key={section.id} className="mb-0.5">
               <div
                 className={cn(
-                  "flex items-stretch rounded-md transition",
+                  "flex items-stretch rounded-lg transition-all duration-200",
                   isActive
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-accent hover:text-foreground",
+                    ? "bg-primary/10 text-primary shadow-sm shadow-primary/5"
+                    : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
                 )}
               >
                 <Link
                   to={section.landingPath}
                   className={cn(
-                    "flex flex-1 items-center gap-2 rounded-l-md px-2 py-1.5 text-sm font-medium",
-                    collapsed && "justify-center rounded-md",
+                    "flex flex-1 items-center gap-2 rounded-l-lg px-2 py-1.5 text-sm font-medium",
+                    collapsed && "justify-center rounded-lg",
                   )}
                   title={sectionLabel}
                   onClick={() => setOpenId(section.id)}
@@ -236,7 +232,7 @@ function SidebarInner({
                       toggle(section.id);
                     }}
                     aria-label={isOpen ? `Collapse ${sectionLabel}` : `Expand ${sectionLabel}`}
-                    className="flex w-7 items-center justify-center rounded-r-md text-muted-foreground hover:bg-accent hover:text-foreground"
+                    className="flex w-7 items-center justify-center rounded-r-lg text-muted-foreground hover:bg-accent/50 hover:text-foreground"
                   >
                     <ChevronDown
                       className={cn(
@@ -248,7 +244,7 @@ function SidebarInner({
                 )}
               </div>
               {!collapsed && isOpen && (
-                <ul className="mt-0.5 space-y-0.5 border-l border-border/60 pl-2">
+                <ul className="mt-0.5 space-y-0.5 border-l border-primary/20 pl-2">
                   {section.items.map((item) => {
                     const Icon = item.icon ?? section.icon;
                     const slug = leafSlug(section.basePath, item.to);
@@ -262,10 +258,10 @@ function SidebarInner({
                           end={item.to === section.basePath}
                           className={({ isActive: leafActive }) =>
                             cn(
-                              "flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px] transition",
+                              "flex items-center gap-2 rounded-md px-2 py-1.5 text-[13px] transition-all duration-200",
                               leafActive
                                 ? "bg-primary/15 text-primary"
-                                : "text-muted-foreground hover:bg-accent hover:text-foreground",
+                                : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
                             )
                           }
                           title={itemLabel}
@@ -282,8 +278,10 @@ function SidebarInner({
           );
         })}
       </nav>
-      <div className="border-t border-border p-2 text-[10px] text-muted-foreground">
-        <div className={cn("font-mono tracking-wide", collapsed && "text-center")}>ChainScope v1.0</div>
+      <div className="border-t border-white/[0.06] p-2 text-[10px] text-muted-foreground">
+        <div className={cn("font-mono tracking-wide", collapsed && "text-center")}>
+          ChainScope v1.0
+        </div>
       </div>
     </>
   );

@@ -73,7 +73,7 @@ export function HomePage() {
                   <Link
                     key={c.id}
                     to={`/tokens/${c.id}`}
-                    className="flex items-center gap-2 rounded-md border border-border/60 bg-muted/20 p-2 transition hover:bg-accent sm:gap-3"
+                    className="flex items-center gap-2 rounded-md border border-white/[0.06] bg-card/40 p-2 backdrop-blur-sm transition-all duration-200 hover:border-primary/20 hover:bg-card/60 hover:shadow-sm hover:shadow-primary/[0.03] sm:gap-3"
                   >
                     <CoinThumb src={c.image} alt={c.symbol} size={28} />
                     <div className="min-w-0 flex-1">
@@ -107,15 +107,15 @@ export function HomePage() {
           <CardContent className="space-y-3">
             <QueryState isLoading={gas.isLoading} error={gas.error}>
               <div className="grid grid-cols-3 gap-2 text-center">
-                <div className="rounded-md border border-border/60 p-2">
+                <div className="rounded-md border border-white/[0.06] bg-card/30 p-2 backdrop-blur-sm">
                   <div className="text-[10px] uppercase text-muted-foreground">{t("home.gas.slow")}</div>
                   <div className="num text-base font-semibold">{gas.data?.safe ?? "-"}</div>
                 </div>
-                <div className="rounded-md border border-primary/40 bg-primary/10 p-2">
+                <div className="rounded-md border border-primary/30 bg-primary/10 p-2 shadow-sm shadow-primary/[0.06]">
                   <div className="text-[10px] uppercase text-muted-foreground">{t("home.gas.std")}</div>
                   <div className="num text-base font-semibold">{gas.data?.propose ?? "-"}</div>
                 </div>
-                <div className="rounded-md border border-border/60 p-2">
+                <div className="rounded-md border border-white/[0.06] bg-card/30 p-2 backdrop-blur-sm">
                   <div className="text-[10px] uppercase text-muted-foreground">{t("home.gas.fast")}</div>
                   <div className="num text-base font-semibold">{gas.data?.fast ?? "-"}</div>
                 </div>
@@ -162,7 +162,7 @@ export function HomePage() {
                 key={s.id}
                 to={s.landingPath}
                 style={{ animationDelay: `${idx * 40}ms` }}
-                className="fade-rise group relative flex h-full flex-col overflow-hidden rounded-lg border border-border/60 bg-card p-4 transition hover:border-primary/50 hover:bg-accent"
+                className="fade-rise group relative flex h-full flex-col overflow-hidden rounded-xl border border-white/[0.06] bg-card/50 p-4 backdrop-blur-xl transition-all duration-300 hover:border-primary/25 hover:bg-card/70 hover:shadow-lg hover:shadow-primary/[0.04]"
               >
                 <div className="flex items-center gap-3">
                   <div className="rounded-md bg-primary/10 p-2 text-primary ring-1 ring-primary/15">
@@ -183,14 +183,14 @@ export function HomePage() {
                     return (
                       <span
                         key={leaf.to}
-                        className="rounded-full border border-border/60 bg-muted/30 px-2 py-0.5 text-[11px] text-muted-foreground"
+                        className="rounded-full border border-white/[0.06] bg-muted/20 px-2 py-0.5 text-[11px] text-muted-foreground"
                       >
                         {leafLabel}
                       </span>
                     );
                   })}
                   {s.items.length > 4 ? (
-                    <span className="rounded-full border border-border/60 px-2 py-0.5 text-[11px] text-muted-foreground">
+                    <span className="rounded-full border border-white/[0.06] px-2 py-0.5 text-[11px] text-muted-foreground">
                       +{s.items.length - 4}
                     </span>
                   ) : null}

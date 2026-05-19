@@ -14,14 +14,12 @@ export function AppShell() {
   const [collapsed, setCollapsed] = useState<boolean>(() =>
     safeLocalStorageGet<boolean>(COLLAPSED_KEY, false),
   );
-  // Mobile drawer state. Always starts closed on each visit.
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 
   useEffect(() => {
     safeLocalStorageSet(COLLAPSED_KEY, collapsed);
   }, [collapsed]);
 
-  // Lock body scroll while the mobile drawer is open so the backdrop sits flush.
   useEffect(() => {
     if (typeof document === "undefined") return;
     const original = document.body.style.overflow;
@@ -33,9 +31,9 @@ export function AppShell() {
 
   return (
     <div className="relative flex min-h-screen items-start bg-background text-foreground">
-      {/* Atmospheric layers: never block input, sit behind everything else. */}
-      <div className="ambient-disabled" aria-hidden />
-      <div className="ambient-disabled2" aria-hidden />
+      {/* Atmospheric gradient layers */}
+      <div className="ambient-glow" aria-hidden />
+      <div className="ambient-grain" aria-hidden />
       <Sidebar
         collapsed={collapsed}
         onToggleCollapsed={() => setCollapsed((prev) => !prev)}
