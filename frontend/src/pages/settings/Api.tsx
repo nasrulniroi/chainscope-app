@@ -8,7 +8,7 @@ export function SettingsApiPage() {
   const health = useApiHealth();
   return (
     <div className="space-y-4">
-      <PageHeader title="API Health" description="Check connectivity to upstream data providers and the DCC backend." />
+      <PageHeader title="API Health" description="Check connectivity to upstream data providers and the ChainScope backend." />
       <QueryState isLoading={health.isLoading} error={health.error}>
         <Card>
           <CardHeader>

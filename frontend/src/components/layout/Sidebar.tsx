@@ -20,7 +20,7 @@ interface Props {
   walletConnected: boolean;
 }
 
-const OPEN_ID_KEY = "dcc_sidebar_open_id_v2";
+const OPEN_ID_KEY = "cs_sidebar_open_id_v1";
 
 export function Sidebar({
   collapsed,
@@ -283,7 +283,7 @@ function SidebarInner({
         })}
       </nav>
       <div className="border-t border-border p-2 text-[10px] text-muted-foreground">
-        <div className={cn("font-mono tracking-wide", collapsed && "text-center")}>DCC v0.1</div>
+        <div className={cn("font-mono tracking-wide", collapsed && "text-center")}>ChainScope v1.0</div>
       </div>
     </>
   );

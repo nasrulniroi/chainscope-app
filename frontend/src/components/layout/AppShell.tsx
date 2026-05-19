@@ -7,7 +7,7 @@ import { Topbar } from "@/components/layout/Topbar";
 import { ErrorBoundary } from "@/components/feedback/ErrorBoundary";
 import { safeLocalStorageGet, safeLocalStorageSet } from "@/lib/storage";
 
-const COLLAPSED_KEY = "dcc_sidebar_collapsed_v1";
+const COLLAPSED_KEY = "cs_sidebar_collapsed_v1";
 
 export function AppShell() {
   const { isConnected } = useAccount();

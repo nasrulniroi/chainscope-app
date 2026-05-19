@@ -24,7 +24,7 @@ export function HomePage() {
   return (
     <div className="space-y-7">
       <PageHeader
-        eyebrow="ChainScope"
+        eyebrow=""
         title={t("home.title")}
         description={t("home.tagline")}
       />

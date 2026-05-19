@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  /* Theme: "Editorial Trading Terminal".
-     Light = warm cream paper + deep ink + petrol-teal accent (FT/editorial).
-     Dark  = deep ink charcoal + cream foreground + bright teal accent (terminal).
+  /* Theme: "ChainScope Intelligence Platform".
+     Light = warm cream paper + deep ink + violet/indigo accent.
+     Dark  = deep ink charcoal + cream foreground + bright violet accent (terminal).
      HSL components feed hsl(var(--token)). */
   :root {
     --background: 38 38% 96%;
@@ -14,7 +14,7 @@
     --card-foreground: 220 25% 12%;
     --popover: 38 42% 99%;
     --popover-foreground: 220 25% 12%;
-    --primary: 194 75% 32%;
+    --primary: 263 60% 45%;
     --primary-foreground: 38 38% 97%;
     --secondary: 38 28% 92%;
     --secondary-foreground: 220 25% 16%;
@@ -30,7 +30,7 @@
     --warning-foreground: 220 25% 12%;
     --border: 38 18% 84%;
     --input: 38 18% 84%;
-    --ring: 194 75% 32%;
+    --ring: 263 60% 45%;
     --radius: 0.5rem;
   }
 
@@ -41,14 +41,14 @@
     --card-foreground: 38 25% 92%;
     --popover: 220 24% 9%;
     --popover-foreground: 38 25% 92%;
-    --primary: 186 78% 58%;
-    --primary-foreground: 220 30% 8%;
+    --primary: 263 70% 65%;
+    --primary-foreground: 263 30% 95%;
     --secondary: 220 22% 14%;
     --secondary-foreground: 38 22% 92%;
     --muted: 220 20% 12%;
     --muted-foreground: 220 10% 65%;
-    --accent: 220 20% 16%;
-    --accent-foreground: 38 22% 92%;
+    --accent: 263 20% 16%;
+    --accent-foreground: 263 22% 92%;
     --destructive: 4 70% 58%;
     --destructive-foreground: 38 25% 95%;
     --success: 158 60% 50%;
@@ -57,7 +57,7 @@
     --warning-foreground: 220 25% 8%;
     --border: 220 18% 16%;
     --input: 220 18% 16%;
-    --ring: 186 78% 58%;
+    --ring: 263 70% 65%;
   }
 
   * {

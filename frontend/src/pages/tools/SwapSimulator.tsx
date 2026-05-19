@@ -82,7 +82,7 @@ export function ToolsSwapSimulatorPage() {
 
   return (
     <div className="space-y-4">
-      <PageHeader title="Swap Simulator" description="Get a 1inch quote for any chain/token pair without leaving DCC." />
+      <PageHeader title="Swap Simulator" description="Get a 1inch quote for any chain/token pair without leaving ChainScope." />
       <Card>
         <CardHeader>
           <CardTitle>Quote</CardTitle>

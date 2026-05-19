@@ -81,7 +81,7 @@ function Inner({ address }: { address: `0x${string}` }) {
             </table>
           </div>
           <p className="mt-3 text-xs text-muted-foreground">
-            For safety, signed revokes are routed through revoke.cash (open-source). DCC never requests
+            For safety, signed revokes are routed through revoke.cash (open-source). ChainScope never requests
             transactional signing.
           </p>
         </CardContent>
