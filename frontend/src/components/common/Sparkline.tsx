@@ -27,7 +27,7 @@ export function Sparkline({ data, width = 110, height = 32, positive, className 
   if (!data || data.length < 2) {
     return <div className="text-[10px] text-muted-foreground">-</div>;
   }
-  const stroke = positive ? "#06b6d4" : positive === false ? "#f43f5e" : "#94a3b8";
+  const stroke = positive ? "#f59e0b" : positive === false ? "#f43f5e" : "#64748b";
   return (
     <svg
       width={width}

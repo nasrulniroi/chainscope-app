@@ -9,10 +9,10 @@ interface Props {
 
 export function PageHeader({ title, eyebrow, description, actions }: Props) {
   return (
-    <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+    <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
       <div className="space-y-1.5">
         {eyebrow ? <div className="label-eyebrow">{eyebrow}</div> : null}
-        <h1 className="font-display text-2xl font-semibold leading-[1.05] md:text-[2rem]">
+        <h1 className="font-display text-xl font-bold uppercase tracking-wider leading-tight md:text-2xl">
           {title}
         </h1>
         {description ? (

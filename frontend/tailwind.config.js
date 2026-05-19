@@ -61,12 +61,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["Exo 2", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Orbitron", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "monospace"],
-      },
-      backdropBlur: {
-        xs: "2px",
       },
       keyframes: {
         "accordion-down": {

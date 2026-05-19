@@ -44,3 +44,4 @@ __pycache__/
 coverage
 .cache
 *.tsbuildinfo
+.claude/skills/

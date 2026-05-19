@@ -1,54 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useAccount } from "wagmi";
 
-import { Sidebar } from "@/components/layout/Sidebar";
-import { Topbar } from "@/components/layout/Topbar";
+import { TopNav } from "@/components/layout/TopNav";
+import { MobileDrawer } from "@/components/layout/MobileDrawer";
 import { ErrorBoundary } from "@/components/feedback/ErrorBoundary";
-import { safeLocalStorageGet, safeLocalStorageSet } from "@/lib/storage";
-
-const COLLAPSED_KEY = "cs_sidebar_collapsed_v1";
 
 export function AppShell() {
   const { isConnected } = useAccount();
-  const [collapsed, setCollapsed] = useState<boolean>(() =>
-    safeLocalStorageGet<boolean>(COLLAPSED_KEY, false),
-  );
-  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    safeLocalStorageSet(COLLAPSED_KEY, collapsed);
-  }, [collapsed]);
-
-  useEffect(() => {
-    if (typeof document === "undefined") return;
-    const original = document.body.style.overflow;
-    if (mobileOpen) document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = original;
-    };
-  }, [mobileOpen]);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="relative flex min-h-screen items-start bg-background text-foreground">
+    <div className="relative flex min-h-screen flex-col bg-background text-foreground">
       {/* Atmospheric gradient layers */}
       <div className="ambient-glow" aria-hidden />
       <div className="ambient-grain" aria-hidden />
-      <Sidebar
-        collapsed={collapsed}
-        onToggleCollapsed={() => setCollapsed((prev) => !prev)}
-        mobileOpen={mobileOpen}
-        onMobileClose={() => setMobileOpen(false)}
+      <MobileDrawer
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
         walletConnected={isConnected}
       />
-      <div className="relative z-10 flex min-h-screen min-w-0 flex-1 flex-col">
-        <Topbar onOpenMobileMenu={() => setMobileOpen(true)} />
-        <main className="flex-1 overflow-x-hidden px-3 py-4 sm:px-4 sm:py-5 md:px-8 md:py-7">
-          <ErrorBoundary>
-            <Outlet />
-          </ErrorBoundary>
-        </main>
-      </div>
+      <TopNav
+        onOpenMobile={() => setMobileOpen(true)}
+        walletConnected={isConnected}
+      />
+      <main className="relative z-10 flex-1 px-3 py-4 sm:px-4 sm:py-5 md:px-6 md:py-6 lg:px-8">
+        <ErrorBoundary>
+          <Outlet />
+        </ErrorBoundary>
+      </main>
     </div>
   );
 }
